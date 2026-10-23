@@ -188,7 +188,7 @@
             
             <div class="faq-accordion">
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q1">How does a shoot work?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -196,7 +196,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q2">How long until the retouched photos are delivered?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -204,7 +204,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q3">What are the usage rights for the photos?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -212,7 +212,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q4">What are the best places for a photo session in Bordeaux?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -220,7 +220,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q5">What happens if the weather is bad?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -228,7 +228,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button type="button" class="faq-question" aria-expanded="false">
                         <span data-i18n="contact.q6">Can I order extra photos after the session?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -243,21 +243,6 @@
         if (service && serviceField && [...serviceField.options].some((option) => option.value === service)) {
             serviceField.value = service;
         }
-        document.querySelectorAll(".faq-question").forEach((question) => {
-            question.addEventListener("click", () => {
-                const item = question.parentElement;
-                const open = item.classList.contains("active");
-                document.querySelectorAll(".faq-item").forEach((other) => {
-                    other.classList.remove("active");
-                    const button = other.querySelector(".faq-question");
-                    if (button) button.setAttribute("aria-expanded", "false");
-                });
-                if (!open) {
-                    item.classList.add("active");
-                    question.setAttribute("aria-expanded", "true");
-                }
-            });
-        });
     </script>
 
     <!-- Footer -->

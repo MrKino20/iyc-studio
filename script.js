@@ -259,15 +259,16 @@ document.addEventListener('DOMContentLoaded', function() {
         question.addEventListener('click', function() {
             const faqItem = this.parentElement;
             const isActive = faqItem.classList.contains('active');
-            
-            // Close all FAQ items
+
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('active');
+                const button = item.querySelector('.faq-question');
+                if (button) button.setAttribute('aria-expanded', 'false');
             });
-            
-            // Toggle current item
+
             if (!isActive) {
                 faqItem.classList.add('active');
+                this.setAttribute('aria-expanded', 'true');
             }
         });
     });
