@@ -540,6 +540,10 @@ strong {
     object-fit: cover;
 }
 
+.testimonial-image img.testimonial-face {
+    object-position: center 30%;
+}
+
 .testimonial-content {
     padding: 2rem;
 }
