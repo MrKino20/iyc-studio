@@ -64,7 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ code: sessionId, password })
             });
-            const data = await response.json();
+            const raw = await response.text();
+            let data = {};
+            try {
+                data = raw ? JSON.parse(raw) : {};
+            } catch (parseError) {
+                throw new Error("La galerie en ligne ne répond pas. Réessaie dans une minute.");
+            }
             if (!response.ok) throw new Error(data.error || "Connexion impossible");
             loadGallery(data.gallery);
         } catch (error) {

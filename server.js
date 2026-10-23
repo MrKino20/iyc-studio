@@ -3,6 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const { renderAll, blogImages } = require("./lib/render");
+const { slugify, hashPassword, checkGalleryPassword, clientView } = require("./lib/gallery-auth");
+const { pushGallery, deleteRemoteGallery, pullGallery } = require("./lib/gallery-cloud");
 
 const ROOT = __dirname;
 const PORT = process.env.PORT || 8765;
@@ -17,16 +19,6 @@ function readJson(name, fallback) {
 function writeJson(name, data) {
   fs.mkdirSync(path.join(ROOT, "data"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "data", name), JSON.stringify(data, null, 2));
-}
-
-function slugify(value) {
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "")
-    .slice(0, 80);
 }
 
 function stripTags(html) {
@@ -121,10 +113,6 @@ function parseBlocks(html) {
     }
   }
   return blocks;
-}
-
-function hashPassword(password, salt) {
-  return crypto.scryptSync(password, salt, 32).toString("hex");
 }
 
 function ensureAuth() {
@@ -230,22 +218,28 @@ function readGalleries() {
   return readJson("galleries.json", { galleries: [] });
 }
 
-function clientView(gallery) {
-  return {
-    code: gallery.code,
-    clientName: gallery.clientName,
-    sessionDate: gallery.date,
-    maxPhotos: gallery.maxPhotos,
-    locked: Boolean(gallery.selection && gallery.selection.submittedAt),
-    selectedPhotos: (gallery.selection && gallery.selection.photoIds) || [],
-    photos: gallery.photos.map((photo, index) => ({
-      id: photo.id,
-      filename: photo.filename,
-      number: String(index + 1).padStart(3, "0"),
-      url: `/api/client/photo/${photo.id}`,
-      thumbnail: `/api/client/photo/${photo.id}`,
-    })),
-  };
+async function mirrorGallery(gallery) {
+  try {
+    await pushGallery(ROOT, gallery);
+  } catch (error) {
+    console.error("Envoi Netlify impossible :", error.message);
+  }
+}
+
+async function refreshSelections(galleries) {
+  let changed = false;
+  for (const gallery of galleries) {
+    try {
+      const remote = await pullGallery(gallery.id);
+      if (!remote || !remote.selection) continue;
+      const before = JSON.stringify(gallery.selection || null);
+      gallery.selection = remote.selection;
+      if (JSON.stringify(gallery.selection) !== before) changed = true;
+    } catch (error) {
+      console.error("Lecture Netlify impossible :", error.message);
+    }
+  }
+  if (changed) writeJson("galleries.json", { galleries });
 }
 
 function adminView(gallery) {
@@ -267,15 +261,6 @@ function adminView(gallery) {
       submittedAt: (gallery.selection && gallery.selection.submittedAt) || null,
     },
   };
-}
-
-function checkGalleryPassword(gallery, password) {
-  if (!gallery.hash || !gallery.salt) return false;
-  const hash = hashPassword(password || "", gallery.salt);
-  const left = Buffer.from(hash);
-  const right = Buffer.from(gallery.hash);
-  if (left.length !== right.length) return false;
-  return crypto.timingSafeEqual(left, right);
 }
 
 function normalizeGallery(input, previous) {
@@ -546,11 +531,13 @@ async function handleApi(req, res, url) {
   if (!isAuthed(req)) return send(res, 401, JSON.stringify({ error: "Connexion requise" }));
 
   if (req.method === "GET" && url.pathname === "/api/content") {
+    const galleries = readGalleries().galleries;
+    await refreshSelections(galleries);
     return send(res, 200, JSON.stringify({
       projects: readJson("portfolio.json", { projects: [] }).projects,
       posts: readJson("posts.json", { posts: [] }).posts,
       library: library(),
-      galleries: readGalleries().galleries.map(adminView),
+      galleries: galleries.map(adminView),
     }));
   }
   if (req.method === "POST" && url.pathname === "/api/upload") {
@@ -574,6 +561,7 @@ async function handleApi(req, res, url) {
     assertUniqueCode(galleryFile.galleries, gallery);
     galleryFile.galleries.push(gallery);
     writeJson("galleries.json", galleryFile);
+    await mirrorGallery(gallery);
     return send(res, 200, JSON.stringify(adminView(gallery)));
   }
   const galleryPhotoMatch = url.pathname.match(/^\/api\/galleries\/([a-f0-9]+)\/photos\/([a-f0-9]{16})$/);
@@ -591,6 +579,7 @@ async function handleApi(req, res, url) {
     gallery.photos = gallery.photos.filter((photo) => photo.id !== galleryPhotoMatch[2]);
     if (gallery.selection) gallery.selection.photoIds = gallery.selection.photoIds.filter((id) => id !== galleryPhotoMatch[2]);
     writeJson("galleries.json", galleryFile);
+    await mirrorGallery(gallery);
     return send(res, 200, JSON.stringify(adminView(gallery)));
   }
   const galleryPhotosMatch = url.pathname.match(/^\/api\/galleries\/([a-f0-9]+)\/photos$/);
@@ -600,6 +589,7 @@ async function handleApi(req, res, url) {
     if (!gallery) return send(res, 404, JSON.stringify({ error: "Galerie introuvable" }));
     gallery.photos.push(savePrivatePhoto(gallery.id, body.dataUrl, body.name));
     writeJson("galleries.json", galleryFile);
+    await mirrorGallery(gallery);
     return send(res, 200, JSON.stringify(adminView(gallery)));
   }
   const galleryMatch = url.pathname.match(/^\/api\/galleries\/([a-f0-9]+)$/);
@@ -611,12 +601,19 @@ async function handleApi(req, res, url) {
     assertUniqueCode(galleryFile.galleries, gallery);
     galleryFile.galleries[index] = gallery;
     writeJson("galleries.json", galleryFile);
+    await mirrorGallery(gallery);
     return send(res, 200, JSON.stringify(adminView(gallery)));
   }
   if (galleryMatch && req.method === "DELETE") {
+    const removed = galleryFile.galleries.find((item) => item.id === galleryMatch[1]);
     galleryFile.galleries = galleryFile.galleries.filter((item) => item.id !== galleryMatch[1]);
     writeJson("galleries.json", galleryFile);
     fs.rmSync(path.join(ROOT, "private-galleries", galleryMatch[1]), { recursive: true, force: true });
+    try {
+      await deleteRemoteGallery(removed);
+    } catch (error) {
+      console.error("Suppression Netlify impossible :", error.message);
+    }
     return send(res, 200, JSON.stringify({ ok: true }));
   }
 
@@ -689,4 +686,8 @@ publish();
 server.listen(PORT, "127.0.0.1", () => {
   console.log(`IYC Studio http://127.0.0.1:${PORT}`);
   console.log(`Tableau de bord http://127.0.0.1:${PORT}/admin`);
+  const file = readGalleries();
+  Promise.all(file.galleries.map((gallery) => mirrorGallery(gallery))).catch((error) => {
+    console.error("Envoi Netlify impossible :", error.message);
+  });
 });

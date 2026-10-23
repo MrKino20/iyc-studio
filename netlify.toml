@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[[redirects]]
+  from = "/api/client/*"
+  to = "/.netlify/functions/client"
+  status = 200
+  force = true
+
 # Ces chemins ne doivent jamais être servis, même s'ils se retrouvent dans le dossier publié.
 [[redirects]]
   from = "/data/*"

@@ -3,3 +3,4 @@ data/galleries.json
 private-galleries/
 .env
 .netlify
+node_modules/
