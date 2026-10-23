@@ -3,7 +3,39 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
+    // ============================================
+    // BANDEAU PROMO — défilement continu
+    // ============================================
+    const promoBanner = document.querySelector('.promo-banner');
+    const promoTrack = promoBanner && promoBanner.querySelector('.promo-track');
+    const promoSeed = promoTrack && promoTrack.querySelector('p');
+    if (promoBanner && promoTrack && promoSeed) {
+        const promoSample = promoSeed.cloneNode(true);
+        const fillPromo = () => {
+            const group = document.createElement('div');
+            group.className = 'promo-group';
+            promoTrack.replaceChildren(group);
+            const minWidth = promoBanner.clientWidth + 8;
+            let count = 0;
+            do {
+                const item = promoSample.cloneNode(true);
+                if (count > 0) item.setAttribute('aria-hidden', 'true');
+                else item.removeAttribute('aria-hidden');
+                group.appendChild(item);
+                count += 1;
+            } while (group.scrollWidth < minWidth && count < 40);
+            const copy = group.cloneNode(true);
+            copy.setAttribute('aria-hidden', 'true');
+            promoTrack.appendChild(copy);
+            const seconds = Math.max(8, Math.round(group.scrollWidth / 70));
+            promoTrack.style.setProperty('--promo-duration', seconds + 's');
+        };
+        fillPromo();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fillPromo);
+        window.addEventListener('resize', debounce(fillPromo, 200));
+    }
+
     // ============================================
     // MOBILE MENU TOGGLE
     // ============================================
@@ -290,10 +322,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = contactForm.querySelector('[type="submit"]');
             if (submitButton) submitButton.disabled = true;
 
+            const data = new FormData(contactForm);
+            const service = contactForm.querySelector('#service');
+            if (service && service.selectedIndex > 0) {
+                data.set('service', service.options[service.selectedIndex].textContent.trim());
+            }
+            for (const [key, value] of [...data.entries()]) {
+                if (typeof value === 'string' && value.trim() === '') data.delete(key);
+            }
+            data.delete('subject');
+            data.delete('bot-field');
+
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(contactForm)).toString()
+                body: new URLSearchParams(data).toString()
             })
                 .then((response) => {
                     if (!response.ok) throw new Error('form');

@@ -45,6 +45,12 @@
         .cover-frame { position: relative; height: 240px; overflow: hidden; background: #1c1c1c; cursor: grab; touch-action: none; user-select: none; margin-bottom: 8px; }
         .cover-frame.dragging { cursor: grabbing; }
         .cover-frame img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+        .cover-caption { position: absolute; left: 16px; right: 16px; bottom: 14px; margin: 0; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 1.35rem; line-height: 1.15; pointer-events: none; }
+        .cover-caption.light { color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45); }
+        .cover-caption.dark { color: #111; text-shadow: 0 2px 12px rgba(255, 255, 255, 0.65); }
+        .color-choice { display: flex; gap: 8px; }
+        .color-choice button { width: auto; padding: 8px 14px; border: 1px solid var(--line); background: #fff; }
+        .color-choice button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
         .library { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; max-height: 420px; overflow: auto; }
         .library button.blocked { opacity: 0.35; cursor: not-allowed; }
         .tag { position: absolute; left: 4px; bottom: 4px; background: #111; color: #fff; font-size: 10px; padding: 2px 4px; }
@@ -168,8 +174,13 @@
                         <label>Phrase d'accroche</label><input name="excerpt" value="${escapeAttr(project.excerpt)}">
                         <label>Présentation du projet</label><textarea name="story">${escapeHtml((project.story || []).join("\n\n"))}</textarea>
                         <label>Photo de couverture</label>
-                        <div class="cover-frame" id="coverFrame"><img id="coverImage" alt="" draggable="false"></div>
+                        <div class="cover-frame" id="coverFrame"><img id="coverImage" alt="" draggable="false"><p class="cover-caption" id="coverCaption"></p></div>
                         <p class="hint">Glisse la photo dans le cadre pour la monter ou la descendre, comme une couverture Facebook.</p>
+                        <label>Couleur du texte sur la photo</label>
+                        <div class="color-choice" id="textColor">
+                            <button type="button" data-color="white">Blanc</button>
+                            <button type="button" data-color="black">Noir</button>
+                        </div>
                         <label>Photos du projet</label>
                         <input id="addPhotos" type="file" accept="image/*" multiple hidden>
                         <div class="photos" id="photoList"></div>
@@ -198,6 +209,7 @@
                 render();
             };
             drawProjectPhotos();
+            bindTextColor();
             document.getElementById("editor").onsubmit = async (event) => {
                 event.preventDefault();
                 const data = Object.fromEntries(new FormData(event.target));
@@ -205,6 +217,7 @@
                 data.photos = project.photos;
                 data.cover = project.cover;
                 data.coverPosition = project.coverPosition || "50% 50%";
+                data.textColor = project.textColor === "black" ? "black" : "white";
                 data.slug = project.slug;
                 try {
                     if (project.id) await api("/api/projects/" + project.id, { method: "PUT", body: JSON.stringify(data) });
@@ -277,6 +290,30 @@
             document.getElementById("addPhoto").onclick = () => document.getElementById("addPhotos").click();
             drawCoverFrame();
             drawLibrary();
+        }
+
+        function bindTextColor() {
+            const project = state.editing;
+            project.textColor = project.textColor === "black" ? "black" : "white";
+            const box = document.getElementById("textColor");
+            const titleInput = document.querySelector('#editor [name="title"]');
+            const sync = () => {
+                box.querySelectorAll("button").forEach((button) => {
+                    button.classList.toggle("active", button.dataset.color === project.textColor);
+                });
+                const caption = document.getElementById("coverCaption");
+                if (!caption) return;
+                caption.textContent = (titleInput && titleInput.value.trim()) || "Titre";
+                caption.className = "cover-caption " + (project.textColor === "black" ? "dark" : "light");
+            };
+            box.querySelectorAll("button").forEach((button) => {
+                button.onclick = () => {
+                    project.textColor = button.dataset.color;
+                    sync();
+                };
+            });
+            if (titleInput) titleInput.addEventListener("input", sync);
+            sync();
         }
 
         function drawCoverFrame() {

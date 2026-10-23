@@ -427,6 +427,7 @@ function normalizeProject(input, previous) {
     story: Array.isArray(input.story) ? input.story.map((item) => String(item).trim()).filter(Boolean) : String(input.story || "").split(/\n{2,}/).map((item) => item.trim()).filter(Boolean),
     cover,
     coverPosition: coverFocus(input.coverPosition),
+    textColor: input.textColor === "black" ? "black" : "white",
     photos,
   };
 }
