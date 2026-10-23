@@ -1,7 +1,7 @@
 {
   "promo": {
-    "title": "Special offer: 15% off your first session!",
-    "text": "Book today and enjoy this exclusive offer for new clients."
+    "title": "Welcome offer: 10% off your first session",
+    "text": "For new clients."
   },
   "nav": {
     "home": "Home",
@@ -58,7 +58,7 @@
     "metaTitle": "Professional photographer in Bordeaux | Outdoor portraits and professional shoots | IYC Studio",
     "metaDescription": "IYC Studio - Professional photographer in Bordeaux, specializing in professional, corporate and lifestyle portraits. Capture authenticity with Jimmy.",
     "close": "Close",
-    "popupTitle": "Special offer: 15% off your first session!",
+    "popupTitle": "Welcome offer: 10% off your first session",
     "popupText": "Get your exclusive discount code by email",
     "emailPlaceholder": "Your email address",
     "getCode": "Get my code",

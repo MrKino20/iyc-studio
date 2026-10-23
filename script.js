@@ -40,12 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closePopup = document.querySelector('.close-popup');
     const leadMagnetForm = document.getElementById('leadMagnetForm');
     
-    // Show popup after 5 seconds (first visit only)
-    if (leadMagnetPopup && !sessionStorage.getItem('leadMagnetShown')) {
-        setTimeout(() => {
-            leadMagnetPopup.classList.add('active');
-        }, 5000);
-    }
+    // Fenêtre masquée pour l'instant.
     
     // Close popup
     if (closePopup) {
@@ -76,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Lead Magnet Email:', email);
             
             // Show success message
-            alert('Merci ! Votre code de réduction -15% vous a été envoyé par email.');
+            alert('Merci ! Votre code de réduction de 10 % vous a été envoyé par email.');
             
             // Close popup
             leadMagnetPopup.classList.remove('active');

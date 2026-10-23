@@ -196,8 +196,14 @@ strong {
 
 .promo-banner {
     background-color: var(--accent-color);
-    padding: 12px 20px;
-    text-align: center;
+    overflow: hidden;
+    padding: 12px 0;
+}
+
+.promo-track {
+    display: flex;
+    width: max-content;
+    animation: promo-slide 18s linear infinite;
 }
 
 .promo-banner p {
@@ -205,6 +211,25 @@ strong {
     font-size: 0.9rem;
     margin: 0;
     font-weight: 500;
+    white-space: nowrap;
+    padding-right: 4rem;
+}
+
+@keyframes promo-slide {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .promo-track {
+        animation: none;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .promo-track p[aria-hidden="true"] {
+        display: none;
+    }
 }
 
 .navbar {
@@ -660,13 +685,13 @@ strong {
    LEAD MAGNET POPUP
    ============================================== */
 .lead-magnet-popup {
+    display: none !important;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10000;
