@@ -1,0 +1,185 @@
+{
+  "categories": {
+    "Mariage": "Wedding",
+    "Portrait": "Portrait",
+    "Événement": "Event",
+    "Lieu": "Place"
+  },
+  "projects": {
+    "mariage": {
+      "title": "The wedding day",
+      "excerpt": "Soft light, the dressed table, and the bride's entrance.",
+      "story": [
+        "A wedding is told in the details as much as in the looks. Here the light stays soft: the menu on the cloth, the name written by hand, the glass waiting.",
+        "Then the bride comes in. The dress takes the room, the veil moves, and the smile does the rest. I photographed the day as a story, without rushing it."
+      ]
+    },
+    "portraits": {
+      "title": "Portraits, in Bordeaux",
+      "excerpt": "Faces put at ease, for a profile, a shop window, a story.",
+      "story": [
+        "Before I press the shutter, I take time. We talk about the outfit, the place, and the result you want to keep. The portrait comes after, once the person has half forgotten the camera.",
+        "Natural light, the streets and walls of Bordeaux, and an image that still looks like you six months later. That is the work I do for professional profiles, personal branding, and sessions that are simply for yourself."
+      ]
+    },
+    "tgs": {
+      "title": "TGS 2025",
+      "excerpt": "Cosplayers, armor and glances, between two aisles of the show.",
+      "story": [
+        "At the Tokyo Game Show, people arrive already in character. My job is to find the face under the costume, and the light that makes it believable.",
+        "Armor, neon, makeup: event coverage held like a series of portraits. Each photo has to be able to stand alone, and all of them together have to tell the hall."
+      ]
+    },
+    "escrime": {
+      "title": "On the piste",
+      "excerpt": "Historical fencing: the gesture is faster than the eye.",
+      "story": [
+        "On a piste, everything is decided in a fraction of a second. I stayed close to the bouts: guards, blades, and the concentration of a child already entirely inside the fight.",
+        "Event coverage, for me, is not a group photo at the end. It is the moment when nobody is thinking about the camera."
+      ]
+    },
+    "bordeaux-pierre-et-pluie": {
+      "title": "Bordeaux, stone and rain",
+      "excerpt": "The city as the subject: courtyards, quays, and the light indoors.",
+      "story": [
+        "Bordeaux lets itself be photographed when you look up, or when you stay out in the rain. A courtyard open to the sky. The Chartrons quays, the tram, the coats.",
+        "And sometimes an interior that keeps the light of the Garonne. This project is a walk: lines, stone, and the rhythm of the city."
+      ]
+    }
+  },
+  "posts": {
+    "transformez-vos-photos-avec-les-presets-simplicite-et-creativite-en-un-clic": {
+      "title": "Transform your photos with presets: simplicity and creativity in one click",
+      "excerpt": "See how presets can change your workflow, and download one of my presets for free.",
+      "dateLabel": "March 15, 2025",
+      "blocks": {
+        "0": "Have you ever spent hours editing photos after a session, adjusting every setting until you were satisfied?",
+        "1": "Picture this: you are in the middle of a shoot, capturing precious moments, but when you get home and start editing you are overwhelmed by the adjustments left to make. That is where presets come in. These small tools can change your workflow and free your creativity.",
+        "2": "But... what is a preset?",
+        "3": { "alt": "Before one of my Lightroom presets", "caption": "Before one of my Lightroom presets" },
+        "4": { "alt": "After one of my Lightroom presets", "caption": "After one of my Lightroom presets" },
+        "5": "A preset is a saved set of editing settings you can apply to your photos in a single click. They save time and keep a consistent style across your images.",
+        "6": "Whether you use Adobe Lightroom, Photoshop or another editing program, presets have become essential for many photographers. In the example above, my culinary preset brings out the crisp edge of the cookie and makes it slightly more vivid and bright.",
+        "7": "My story with presets",
+        "8": "One day, on a particularly full shoot, I applied a preset I had built for similar light. In a moment the photos came alive, and I could deliver the images to my client much faster than planned.",
+        "9": "When I started in photography, I was often frustrated by how long each photo took to edit. I wanted to speed that up without giving up quality. That is when I discovered presets. They let me focus on shooting and spend less time in front of the screen.",
+        "10": "How to install and use presets, and why they help",
+        "11": "Applying them",
+        "12": [
+          "Choose a photo:",
+          "Import a photo into Lightroom and switch to the Develop module.",
+          "Apply the preset:",
+          "In the right-hand panel, scroll to Presets.",
+          "Click the preset you want. You will see the changes on the photo immediately. For black-and-white presets, check that Black & White is enabled in Lightroom.",
+          "Make it yours:",
+          "After applying the preset, you can still adjust individual settings (exposure, contrast or white balance) until the result feels right.",
+          "Presets are a starting point. Adapt them until you get the picture you want."
+        ],
+        "13": "Installing them",
+        "14": [
+          "Download:",
+          "Start by downloading the compressed file (often a .zip) that contains the presets.",
+          "Unzip:",
+          "Once it has downloaded, unzip it to reach the preset files. You can use the tools built into your system, or a program such as WinRAR or 7-Zip.",
+          "Open Lightroom:",
+          "Launch Adobe Lightroom on your computer.",
+          "Open the Develop module:",
+          "Switch to Develop by clicking the matching icon in the top-right of the Lightroom window.",
+          "Import the presets:",
+          "In the right-hand panel, find Presets.",
+          "Click the + sign and choose Import to add new presets.",
+          "Go to the folder where you unzipped the presets, select them, and click Import.",
+          "Restart Lightroom:",
+          "You may need to restart Lightroom before the new presets appear in the list."
+        ],
+        "15": "The advantages",
+        "16": [
+          "Time: applying a preset is much faster than adjusting every setting by hand.",
+          "Consistency: using the same presets across a series keeps the final look even.",
+          "Creativity: presets let you try different styles and moods without the effort."
+        ],
+        "17": "Special offer: download my free preset",
+        "18": "To thank you for reading, and to help you start with presets, I am giving away one of my favorite presets for free.",
+        "19": "Fill in the form here to get your free preset.",
+        "21": "Sign up to my newsletter with the link below, and the preset will arrive in your inbox.",
+        "22": { "label": "Get the free preset" },
+        "23": "Note: this preset gives a consistent base, but every photo is unique and may still need adjustments.",
+        "24": "Conclusion: make retouching easier",
+        "25": "Presets are more than an editing shortcut. They open a more efficient, more creative way of working. Once they are part of your workflow, you can focus on what matters: capturing unique moments and telling stories with your photos.",
+        "27": ["Stay in touch: subscribe to my newsletter for more advice and exclusive offers."]
+      }
+    },
+    "maitrisez-les-bases-de-la-photographie-le-guide-pour-transformer-vos-cliches-en-chef-doeuvre": {
+      "title": "Master the basics of photography: the guide to turning snapshots into photographs",
+      "excerpt": "Exposure triangle, light and composition: the basics that turn a snapshot into a picture.",
+      "dateLabel": "February 15, 2025",
+      "blocks": {
+        "0": "Have you ever taken a photo hoping to catch the magic of a moment... and ended up disappointed? Don't worry. Everyone has been there.",
+        "1": "I remember my beginnings, juggling settings without really understanding what I was doing. Until the day I found a simple truth: photography is not just pressing a button. It is a dance between light, technique and creativity.\nToday I am taking you into that adventure, to the basics that turn ordinary snapshots into extraordinary images. It starts with the exposure triangle.",
+        "2": "1. The exposure triangle: the foundation of everything",
+        "3": "Shutter speed: the time your sensor is exposed to light. A fast speed freezes action, ideal for a drop of water hanging in the air. A longer speed creates beautiful motion blur, like light trails in the city.",
+        "4": "Aperture (f-stop): think of your lens opening as a door. The wider it is (a small f-number), the more light comes in. That creates the soft background blur called bokeh. A small opening (a high f-number) is perfect for sharp landscapes.",
+        "6": "Here, the photo was underexposed",
+        "7": "Here is the original photo...",
+        "8": "And finally the overexposed one!",
+        "9": "ISO: think of it as your camera's ability to see in the dark. The higher the ISO, the more sensitive it is to light... but watch the digital noise, which can damage the image.",
+        "10": "Here is an example where the same photo received different exposures:",
+        "11": "Light is the soul of photography, and the exposure triangle is the tool you use to control it. It is made of three main settings:",
+        "12": "A practical tip: when you change one side of the triangle, the other two have to adapt to keep the exposure balanced.",
+        "13": "Adapt the light to the mood you want to convey. My favorite here is the least exposed one (I added a touch of light on the pine cone to bring it forward, but you get the idea).",
+        "14": "2. Working with light: your best ally",
+        "15": "Natural light is an endless palette. In photography, people often distinguish:",
+        "17": "Hard light: more direct, it can create striking contrast. It suits a bold style, or playing with shadows.",
+        "18": "Soft light: ideal for portraits, it softens shadows and brings out detail. It is everywhere at sunrise and sunset, what we call the golden hour.",
+        "20": "My advice: take time to look at the light around you before you shoot. A change of angle can transform everything.",
+        "21": "3. Composition: giving your images strength",
+        "22": "A good photographer does not only capture what they see. They tell a story. Here are three simple rules for structuring a picture:",
+        "23": "The rule of thirds: imagine the frame divided into nine equal parts. Place your subjects on the lines or at the intersections for a balanced result. You can turn this grid on in a phone or a camera.",
+        "25": "Here are three photos that show the basics of composition: leading lines, the rule of thirds, and minimalism.",
+        "26": "Leading lines: use natural lines (roads, paths and so on) to guide the eye toward your subject.",
+        "27": "Minimalism: sometimes less is more. Remove what is unnecessary and let your subject breathe in the frame.",
+        "28": "4. Find your style: express your creativity",
+        "29": [
+          "Technique matters, but your vision is what makes the photos yours. Always ask yourself:",
+          "What do I want to tell?",
+          "What emotion does this photo evoke?"
+        ],
+        "30": "Experiment with unusual angles, reflections, even color. You find a style by stepping off the familiar path.",
+        "32": "Conclusion: become fluent with your camera",
+        "33": "Photography is a mix of science and art, a dance between technique and instinct. Once you master the basics — the exposure triangle, light, composition — you open the door to an endless range of creative possibilities.",
+        "35": "Ready to lift your pictures? If this article inspired you, leave a message or share your work with me on Instagram. I am curious to see your world.",
+        "36": { "html": "<a href=\"https://www.instagram.com/iyc_studio/\">See IYC Studio on Instagram</a>" },
+        "37": "And remember: fluency comes with practice. Pick up your camera, go outside, and capture the world your way."
+      }
+    },
+    "3-cles-pour-decouvrir-la-photographie-en-2025-et-explorer-votre-creativite-rapidement": {
+      "title": "3 keys to discover photography in 2025 and explore your creativity quickly",
+      "excerpt": "Three simple keys to get a grip on photography, capture the moments you love and express your vision.",
+      "dateLabel": "January 15, 2025",
+      "blocks": {
+        "0": "What if 2025 were the year you decided to grow your creativity and capture the precious moments around you?",
+        "1": "Receiving a camera at Christmas, or simply wanting to try a new hobby, can feel like a challenge at first. With the right basics, you can turn that resolution into an exciting adventure.\nIn this article I share 3 essential keys to make photography a real source of pleasure and personal expression this year.",
+        "2": "1. Master the technical basics: unlock your camera",
+        "3": "Quick tip: try aperture priority (A or Av). It lets you play with depth of field and create a beautiful bokeh.",
+        "4": "Technique is the foundation of a good photo. Whether you are starting out or strengthening what you already know, understanding aperture, shutter speed and ISO can transform your pictures.",
+        "6": "Same tree, different point of view!",
+        "7": "We move from a wide view...",
+        "8": "To something close to macro!",
+        "9": "Practice: put a cup of coffee on a table beside a sunny window. Adjust your settings to catch the soft shadows or the strip of light crossing the scene.",
+        "10": "Here is the idea, illustrated with a tree:",
+        "11": "2. Turn your pictures into emotional stories",
+        "12": "Photography is not only technical settings. It holds stories, atmospheres, and above all emotions. Take time to look around you and find an element or a moment that moves you.",
+        "14": "Example: a simple walk in a park can reveal magic — a ray of sun through the branches, a cat watching a fly, a drop of water hanging from a leaf.",
+        "15": "A question to ask: \"What do I want this photo to say?\"",
+        "17": "3. Share your vision and let your creativity grow",
+        "18": "Sharing your pictures is an excellent way to improve and to talk with other enthusiasts. That can be Instagram, a blog, or even a small personal exhibition. Challenge: give your photos a theme, such as \"Bright winters\" or \"New beginnings\".",
+        "19": { "html": "<a href=\"https://www.instagram.com/iyc_studio/\">See IYC Studio on Instagram</a>" },
+        "20": "That gives the series a thread. A practical idea: print your best photos and set up a mini exhibition at home. Invite people close to you to see the work.",
+        "22": "Here I made a series I called \"Water flower\": I shot from ground level, playing with the puddles.",
+        "23": "Conclusion: make this a creative year",
+        "24": "Follow these 3 keys and you will learn the basics of photography, and also a new way of seeing the world. Use the start of the year to capture what inspires you, and let your camera become a partner in your creativity.",
+        "26": "So if you just received a camera for Christmas and you want to explore what it can do, stay close: practical advice and creative ideas are on the way."
+      }
+    }
+  }
+}

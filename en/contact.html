@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="contact.metaTitle">Contact a photographer in Bordeaux | IYC Studio - Jimmy Boisserie</title>
+    <meta name="description" data-i18n-content="contact.metaDescription" content="Contact Jimmy at IYC Studio for photo projects in Bordeaux. Custom quote, booking for professional, corporate and lifestyle portraits.">
+    <link rel="alternate" hreflang="fr" data-hreflang="fr" href="../contact.html">
+    <link rel="alternate" hreflang="en" data-hreflang="en" href="contact.html">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="promo-banner">
+            <p><strong data-i18n="promo.title">Special offer: 15% off your first session!</strong> <span data-i18n="promo.text">Book today and enjoy this exclusive offer for new clients.</span></p>
+        </div>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="../images/fichier-1-300x-AoPvowXDj1U242O6.png" alt="IYC Studio logo">
+                </a>
+                <button class="mobile-menu-toggle" data-i18n-aria-label="nav.menu" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+                    <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="client-gallery.html" data-i18n="nav.gallery">My gallery</a></li>
+                    <li><a href="https://cal.com/jimmy-boisserie-ylxxoq/echange-pour-un-devis" class="cta-button-nav" data-i18n="nav.book" target="_blank" rel="noopener noreferrer">Book my session</a></li>
+                    <li class="language-selector">
+                        <button class="lang-toggle">
+                            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/fr.svg" alt="FR" class="flag-icon">
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a data-lang="fr" href="../contact.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/fr.svg" alt="FR"> Français (FR)</a></li>
+                            <li><a data-lang="en" href="contact.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/flags/4x3/us.svg" alt="EN"> English (US)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="contact.heading">Contact</h1>
+            <p data-i18n="contact.intro">Let's talk about your photography project</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 data-i18n="contact.formTitle">Send me a message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-i18n="contact.name">Full name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-i18n="contact.email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-i18n="contact.phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" data-i18n="contact.service">Type of session *</label>
+                            <select id="service" name="service" required>
+                                <option value="" data-i18n="contact.servicePlaceholder">Select a service</option>
+                                <option value="portrait-professionnel" data-i18n="contact.servicePro">Professional portrait</option>
+                                <option value="portrait-lifestyle" data-i18n="contact.serviceLifestyle">Lifestyle portrait</option>
+                                <option value="corporate" data-i18n="contact.serviceCorporate">Corporate / Company</option>
+                                <option value="evenement" data-i18n="contact.serviceEvent">Event</option>
+                                <option value="autre" data-i18n="contact.serviceOther">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date" data-i18n="contact.date">Preferred date</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message" data-i18n="contact.message">Your message *</label>
+                            <textarea id="message" name="message" rows="6" required data-i18n-placeholder="contact.messagePlaceholder" placeholder="Describe your project, what you need and what you hope for..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button" data-i18n="contact.send">Send the message</button>
+                    </form>
+                    <div class="contact-cta">
+                        <h3 data-i18n="contact.bookingTitle">Online booking</h3>
+                        <p data-i18n="contact.bookingText">Check my availability and book your slot directly</p>
+                        <a href="https://cal.com/jimmy-boisserie-ylxxoq/echange-pour-un-devis" class="cta-button booking-cta" data-i18n="contact.availability" target="_blank" rel="noopener noreferrer">See availability</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <h2 data-i18n="contact.infoTitle">Contact details</h2>
+                    
+                    <div class="contact-info-item">
+                        <h3 data-i18n="contact.emailTitle">Email</h3>
+                        <p><a href="mailto:iycstudio@boisseriejimmy.com">iycstudio@boisseriejimmy.com</a></p>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <h3 data-i18n="contact.phoneTitle">Phone</h3>
+                        <p><a href="tel:+33777818930">+33 7 77 81 89 30</a></p>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <h3 data-i18n="contact.locationTitle">Location</h3>
+                        <p data-i18n="contact.location">Bordeaux and the surrounding area, Nouvelle-Aquitaine</p>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <h3 data-i18n="contact.hoursTitle">Hours</h3>
+                        <p data-i18n-html="contact.hoursHtml">Monday - Friday: 9:00 a.m. - 7:00 p.m.<br>Saturday: By appointment<br>Sunday: Closed</p>
+                    </div>
+
+                    <div class="social-links">
+                        <h3 data-i18n="contact.follow">Follow me</h3>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/iyc_studio/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jimmy-boisserie/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61576980584744" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>
+                            <a href="https://www.behance.net/BoisserieJimmy" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+                                <span class="behance-mark">Be</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 data-i18n="contact.mapTitle">Where I work</h2>
+            <p data-i18n="contact.mapText">Based in Bordeaux, I work across the metropolitan area and nearby</p>
+            <div class="map-placeholder">
+                <iframe
+                    class="map-frame"
+                    title="Map of Bordeaux and the metropolitan area"
+                    data-i18n-title="contact.mapFrame"
+                    src="https://maps.google.com/maps?hl=en&amp;q=Bordeaux&amp;z=11&amp;output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 data-i18n="contact.faqTitle">Frequently asked questions</h2>
+            <p class="section-subtitle" data-i18n="contact.faqIntro">Answers to the questions clients ask most</p>
+            
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q1">How does a shoot work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a1Html"><p>A shoot happens in four steps:</p><ol><li><strong>We talk.</strong> The need, the place, the outfit, and the result you want to keep.</li><li><strong>The session.</strong> I guide you, without rushing, toward natural photos.</li><li><strong>Your gallery.</strong> You receive private access to see the photos and choose the ones included in the package.</li><li><strong>Delivery.</strong> I retouch your selection and send it in high resolution.</li></ol></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q2">How long until the retouched photos are delivered?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a2Html"><p>The usual time is <strong>7 to 10 working days</strong> after the session. That time covers the edit, the retouching and putting the gallery online.</p><p>For delivery within 24 hours, the express option is <strong>€50</strong>.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q3">What are the usage rights for the photos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a3Html"><p>For a portrait, personal use is included: social media, a CV, a personal website and prints for you.</p><p>Commercial use, for a company or a campaign, is set out in the quote. The photos remain my property: they cannot be resold or altered without agreement.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q4">What are the best places for a photo session in Bordeaux?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a4Html"><p>Bordeaux has beautiful settings for photographs. Here is what I recommend:</p><h4>For urban professional portraits:</h4><ul><li><strong>Place de la Bourse</strong> - Water mirror, classical architecture</li><li><strong>Rue Sainte-Catherine</strong> - A lively urban atmosphere</li><li><strong>Pont de Pierre</strong> - Views over the Garonne, sunsets</li><li><strong>Grand Théâtre</strong> - Elegance and neoclassical architecture</li></ul><h4>For natural lifestyle portraits:</h4><ul><li><strong>Jardin Public</strong> - Greenery, soft natural light</li><li><strong>Quays of Bordeaux</strong> - Along the Garonne, a relaxed mood</li><li><strong>Chartrons district</strong> - Authentic lanes, colored walls</li><li><strong>Parc Bordelais</strong> - Nature, quiet, a variety of settings</li></ul><p>I can also suggest places that fit your style and the season. Tell me what you prefer.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q5">What happens if the weather is bad?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a5Html"><p>The weather can be unpredictable, and there are several ways through it:</p><ul><li><strong>Free reschedule:</strong> if the conditions are truly poor, we can move the session at no extra cost</li><li><strong>Covered places:</strong> Bordeaux has many beautiful covered spaces (passages, arcades, covered markets)</li><li><strong>Indoor shoot:</strong> we can switch to an indoor shoot with natural light</li><li><strong>Light rain:</strong> sometimes a fine rain creates a unique, artistic mood</li></ul><p>I watch the forecast in the days before your session and contact you if a change is needed.</p></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span data-i18n="contact.q6">Can I order extra photos after the session?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" data-i18n-html="contact.a6Html"><p>Yes. One retouched photo beyond the package is <strong>€15</strong>.</p><p>You choose it in your private gallery, tell me which one, and I send it once it is retouched.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const service = new URLSearchParams(location.search).get("service");
+        const serviceField = document.getElementById("service");
+        if (service && serviceField && [...serviceField.options].some((option) => option.value === service)) {
+            serviceField.value = service;
+        }
+        document.querySelectorAll(".faq-question").forEach((question) => {
+            question.addEventListener("click", () => {
+                const item = question.parentElement;
+                const open = item.classList.contains("active");
+                document.querySelectorAll(".faq-item").forEach((other) => {
+                    other.classList.remove("active");
+                    const button = other.querySelector(".faq-question");
+                    if (button) button.setAttribute("aria-expanded", "false");
+                });
+                if (!open) {
+                    item.classList.add("active");
+                    question.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4 data-i18n="footer.authenticity">Authenticity</h4>
+                    <p data-i18n="footer.tagline">Photography that captures unique moments.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">Get in touch</h4>
+                    <p><span data-i18n="footer.emailLabel">Email</span> : <a href="mailto:iycstudio@boisseriejimmy.com">iycstudio@boisseriejimmy.com</a></p>
+                    <p><span data-i18n="footer.phoneLabel">Phone</span>: <a href="tel:+33777818930">+33 7 77 81 89 30</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.social">Social</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/iyc_studio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61576980584744" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="https://www.linkedin.com/in/jimmy-boisserie/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="https://www.behance.net/BoisserieJimmy" target="_blank" rel="noopener noreferrer" aria-label="Behance"><span class="behance-mark">Be</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.rights">© IYC Studio 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" data-i18n-aria-label="home.close" aria-label="Close">&times;</button>
+            <h2 data-i18n="home.modalTitle">Book a call</h2>
+            <p data-i18n="home.modalText">Pick a 20-minute slot. I will call you afterwards, then send you a quote.</p>
+            <div class="calendly-embed">
+                <iframe title="Book a call with Jimmy Boisserie" data-i18n-title="home.calFrame" src="https://cal.com/jimmy-boisserie-ylxxoq/echange-pour-un-devis?embed=true" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

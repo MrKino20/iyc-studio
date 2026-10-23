@@ -1,0 +1,31 @@
+[build]
+  command = "node -e \"require('./lib/render').renderAll(process.cwd())\""
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Ces chemins ne doivent jamais être servis, même s'ils se retrouvent dans le dossier publié.
+[[redirects]]
+  from = "/data/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/private-galleries/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/server.js"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/supabase/*"
+  to = "/index.html"
+  status = 404
+  force = true

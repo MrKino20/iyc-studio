@@ -1,0 +1,57 @@
+{
+  "promo": {
+    "title": "Offre Spéciale : -15% sur votre première prestation !",
+    "text": "Réservez dès aujourd'hui et profitez de cette offre exclusive pour les nouveaux clients."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "blog": "Blog",
+    "gallery": "Ma galerie",
+    "book": "Réserver ma Séance",
+    "menu": "Menu"
+  },
+  "footer": {
+    "authenticity": "Authenticité",
+    "tagline": "La photographie qui capture des moments uniques.",
+    "contact": "Contactez-moi",
+    "emailLabel": "Courriel",
+    "phoneLabel": "Téléphone",
+    "social": "Réseaux",
+    "rights": "© IYC Studio 2026. Tous droits réservés."
+  },
+  "portfolio": {
+    "metaTitle": "Portfolio | IYC Studio",
+    "metaDescription": "Projets photo de Jimmy Boisserie : mariages, portraits, événements et Bordeaux.",
+    "heading": "Portfolio",
+    "intro": "Chaque projet raconte un jour, un visage ou un lieu.",
+    "viewSeries": "Voir la série",
+    "all": "Tout",
+    "back": "Tous les projets",
+    "allProjects": "Tous les projets",
+    "next": "Suivant",
+    "ctaTitle": "Envie d'un projet dans cet esprit ?",
+    "ctaButton": "Réserver ma séance",
+    "close": "Fermer",
+    "prev": "Photo précédente",
+    "nextPhoto": "Photo suivante",
+    "facts": {
+      "universe": "Univers",
+      "place": "Lieu",
+      "year": "Année",
+      "photos": "Photos"
+    }
+  },
+  "blog": {
+    "metaTitle": "Blog photographie à Bordeaux | IYC Studio",
+    "metaDescription": "Conseils, astuces et inspirations photo de Jimmy Boisserie, photographe à Bordeaux.",
+    "heading": "Blog",
+    "intro": "Conseils, actualités et inspiration photographique",
+    "read": "Lire l'article",
+    "minutes": "min",
+    "reading": "min de lecture",
+    "back": "Retour au blog"
+  }
+}

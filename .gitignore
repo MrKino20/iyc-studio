@@ -1,0 +1,5 @@
+data/auth.json
+data/galleries.json
+private-galleries/
+.env
+.netlify

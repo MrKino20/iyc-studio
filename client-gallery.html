@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="gallery.metaTitle">Galerie Privée - Sélection Photos | IYC Studio</title>
+    <meta name="description" data-i18n-content="gallery.metaDescription" content="Galerie privée de sélection de photos pour clients IYC Studio">
+    <link rel="alternate" hreflang="fr" data-hreflang="fr" href="client-gallery.html">
+    <link rel="alternate" hreflang="en" data-hreflang="en" href="en/client-gallery.html">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="passwordScreen" class="password-screen">
+        <div class="password-container">
+            <a class="gallery-back" href="index.html" data-i18n-aria-label="gallery.back" aria-label="Page précédente">&#8592;</a>
+            <div class="password-header">
+                <img src="images/fichier-1-300x-AoPvowXDj1U242O6.png" alt="IYC Studio logo" class="password-logo">
+                <h1 data-i18n="gallery.title">Galerie Privée</h1>
+                <p data-i18n="gallery.intro">Cette galerie est protégée. Veuillez entrer votre mot de passe pour accéder à vos photos.</p>
+            </div>
+            <form id="passwordForm" class="password-form">
+                <div class="form-group">
+                    <label for="sessionId" data-i18n="gallery.code">Code d'accès</label>
+                    <input type="text" id="sessionId" data-i18n-placeholder="gallery.codePlaceholder" placeholder="Le code reçu avec vos photos" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" data-i18n="gallery.password">Mot de passe</label>
+                    <input type="password" id="password" data-i18n-placeholder="gallery.passwordPlaceholder" placeholder="Entrez votre mot de passe" required autocomplete="current-password">
+                </div>
+                <p id="loginError" class="password-note"></p>
+                <button type="submit" class="cta-button" data-i18n="gallery.enter">Accéder à ma galerie</button>
+                <p class="password-note" data-i18n-html="gallery.noteHtml">Vous avez reçu ces informations par email. En cas de problème, contactez <a href="mailto:iycstudio@boisseriejimmy.com">iycstudio@boisseriejimmy.com</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Client Gallery (Hidden until password verified) -->
+    <div id="clientGallery" class="client-gallery" style="display: none;">
+        <!-- Header -->
+        <header class="gallery-header">
+            <div class="gallery-nav">
+                <img src="images/fichier-1-300x-AoPvowXDj1U242O6.png" alt="IYC Studio logo" class="gallery-logo">
+                <div class="gallery-info">
+                    <h1 data-i18n="gallery.yourGallery">Votre Galerie Privée</h1>
+                    <p id="clientName" data-i18n="gallery.client">Client</p>
+                    <p class="session-date" id="sessionDate" data-i18n="gallery.sessionDate">Date de la séance</p>
+                </div>
+                <button id="logoutBtn" class="logout-btn" data-i18n="gallery.logout">Déconnexion</button>
+            </div>
+        </header>
+
+        <!-- Selection Status Bar -->
+        <div class="selection-status-bar">
+            <div class="container">
+                <div class="status-content">
+                    <div class="status-info">
+                        <h3 data-i18n="gallery.selectionTitle">Sélection de vos photos</h3>
+                        <p><span data-i18n="gallery.upTo">Sélectionnez jusqu'à</span> <strong><span id="maxPhotos">10</span> <span data-i18n="gallery.photosWord">photos</span></strong> <span data-i18n="gallery.forPackage">pour votre forfait</span></p>
+                    </div>
+                    <div class="selection-counter">
+                        <span class="counter-display">
+                            <span id="selectedCount">0</span> / <span id="maxCount">10</span>
+                        </span>
+                        <p class="counter-label" data-i18n="gallery.selectedLabel">photos sélectionnées</p>
+                    </div>
+                </div>
+                <button id="submitSelection" class="cta-button submit-selection-btn" disabled data-i18n="gallery.submit">
+                    Valider ma sélection
+                </button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <section class="gallery-instructions">
+            <div class="container">
+                <div class="instructions-content">
+                    <h2 data-i18n="gallery.howTitle">Comment sélectionner vos photos</h2>
+                    <div class="instructions-grid">
+                        <div class="instruction-item">
+                            <span class="instruction-number">1</span>
+                            <p data-i18n="gallery.step1">Cliquez sur une photo pour l'agrandir et la voir en détail</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-number">2</span>
+                            <p data-i18n="gallery.step2">Cochez l'étoile ⭐ pour sélectionner vos photos préférées</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-number">3</span>
+                            <p data-i18n="gallery.step3">Une fois satisfait, cliquez sur "Valider ma sélection"</p>
+                        </div>
+                    </div>
+                    <p class="instructions-note" data-i18n="gallery.note">💡 Vous pouvez modifier votre sélection à tout moment avant la validation finale</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Grid -->
+        <section class="proofing-gallery">
+            <div class="container">
+                <!-- Filter Options -->
+                <div class="gallery-filters">
+                    <button class="filter-tag active" data-filter="all"><span data-i18n="gallery.filterAll">Toutes</span> (<span id="totalCount">0</span>)</button>
+                    <button class="filter-tag" data-filter="selected"><span data-i18n="gallery.filterSelected">Sélectionnées</span> (<span id="selectedFilterCount">0</span>)</button>
+                    <button class="filter-tag" data-filter="unselected" data-i18n="gallery.filterUnselected">Non sélectionnées</button>
+                </div>
+
+                <!-- Photos Grid -->
+                <div class="proofing-grid" id="proofingGrid">
+                    <!-- Photos will be dynamically loaded here by JavaScript -->
+                    <!-- Example photo structure: -->
+                    <!-- 
+                    <div class="proof-item" data-photo-id="001" data-selected="false">
+                        <img src="photo.jpg" alt="Photo 001" loading="lazy">
+                        <div class="proof-overlay">
+                            <button class="select-btn" aria-label="Sélectionner cette photo">
+                                <span class="star-icon">☆</span>
+                                <span class="star-icon-filled">⭐</span>
+                            </button>
+                            <span class="photo-number">#001</span>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+                <div id="emptyState" class="empty-state">
+                    <p data-i18n="gallery.loading">Chargement de vos photos...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selection Summary (Sticky Bottom) -->
+        <div class="selection-summary" id="selectionSummary">
+            <div class="container">
+                <div class="summary-content">
+                    <div class="summary-text">
+                        <strong><span id="bottomSelectedCount">0</span> <span data-i18n="gallery.photosSelected">photo(s) sélectionnée(s)</span></strong>
+                        <span class="summary-remaining">
+                            <span data-i18n="gallery.still">Encore</span> <span id="remainingCount">10</span> <span data-i18n="gallery.toChoose">à choisir</span>
+                        </span>
+                    </div>
+                    <button id="submitSelectionBottom" class="cta-button" data-i18n="gallery.submit">Valider ma sélection</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="gallery-footer">
+            <div class="container">
+                <p data-i18n="gallery.footer">Galerie privée et sécurisée - IYC Studio</p>
+                <p data-i18n-html="gallery.helpHtml">Besoin d'aide ? <a href="mailto:iycstudio@boisseriejimmy.com">iycstudio@boisseriejimmy.com</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Lightbox for Full View -->
+    <div id="proofLightbox" class="lightbox">
+        <button class="lightbox-close" data-i18n-aria-label="gallery.close" aria-label="Fermer">&times;</button>
+        <button class="lightbox-prev" data-i18n-aria-label="gallery.prev" aria-label="Précédent">&#10094;</button>
+        <button class="lightbox-next" data-i18n-aria-label="gallery.next" aria-label="Suivant">&#10095;</button>
+        <button class="lightbox-select" data-i18n-aria-label="gallery.select" aria-label="Sélectionner">
+            <span class="star-icon">☆</span>
+            <span class="star-icon-filled">⭐</span>
+            <span class="select-text" data-i18n="gallery.select">Sélectionner</span>
+        </button>
+        <img src="" alt="" id="proofLightboxImage">
+        <div class="lightbox-info">
+            <span class="lightbox-photo-number"></span>
+            <span class="lightbox-selection-status"></span>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content confirmation-modal">
+            <h2 data-i18n="gallery.confirmTitle">Confirmer votre sélection</h2>
+            <p><span data-i18n="gallery.confirmLead">Vous avez sélectionné</span> <strong><span id="confirmCount">0</span> <span data-i18n="gallery.confirmPhotos">photo(s)</span></strong>.</p>
+            <p data-i18n="gallery.confirmText">Souhaitez-vous valider cette sélection ? Cette action est définitive.</p>
+            
+            <div class="selected-photos-preview" id="selectedPhotosPreview">
+                <!-- Thumbnails of selected photos will appear here -->
+            </div>
+            
+            <div class="modal-actions">
+                <button id="cancelConfirmation" class="cta-button-secondary" data-i18n="gallery.backBtn">Retour</button>
+                <button id="finalConfirmation" class="cta-button" data-i18n="gallery.confirmBtn">Confirmer ma sélection</button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">✓</div>
+            <h2 data-i18n="gallery.savedTitle">Sélection enregistrée !</h2>
+            <p data-i18n="gallery.savedText">Votre sélection a été envoyée avec succès.</p>
+            <p data-i18n="gallery.savedDelay">Je vais maintenant retoucher vos photos sélectionnées. Vous recevrez un email avec vos photos finales dans 7-10 jours ouvrés.</p>
+            <div class="success-summary">
+                <p><strong data-i18n="gallery.summary">Récapitulatif :</strong></p>
+                <ul>
+                    <li><span data-i18n="gallery.summaryPhotos">Photos sélectionnées :</span> <span id="successCount">0</span></li>
+                    <li><span data-i18n="gallery.summaryCode">Code :</span> <span id="successSessionId">-</span></li>
+                    <li><span data-i18n="gallery.summaryDate">Date :</span> <span id="successDate">-</span></li>
+                </ul>
+            </div>
+            <button id="closeSuccess" class="cta-button" data-i18n="gallery.close">Fermer</button>
+        </div>
+    </div>
+
+    <script src="client-gallery.js"></script>
+</body>
+</html>

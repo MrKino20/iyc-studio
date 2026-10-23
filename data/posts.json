@@ -1,0 +1,506 @@
+{
+  "posts": [
+    {
+      "id": "transformez-vos-photos-avec-les-presets-simplicite-et-creativite-en-un-clic",
+      "file": "transformez-vos-photos-avec-les-presets-simplicite-et-creativite-en-un-clic.html",
+      "slug": "transformez-vos-photos-avec-les-presets-simplicite-et-creativite-en-un-clic",
+      "title": "Transformez vos photos avec les presets : simplicité et créativité en un clic",
+      "date": "2025-03-15",
+      "dateLabel": "15 mars 2025",
+      "minutes": "4",
+      "excerpt": "Découvrez comment les presets peuvent transformer votre flux de travail, et téléchargez gratuitement l'un de mes presets.",
+      "cover": "images/jim04307-YZ98PMb5b0uaQvw2.jpg",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Avez-vous déjà passé des heures à éditer vos photos après une séance, ajustant chaque paramètre jusqu'à ce que vous soyez satisfait ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Imaginez ceci : Vous êtes en pleine séance photo, capturant des moments précieux, mais lorsque vous rentrez chez vous et commencez à éditer vos photos, vous vous retrouvez submergé par les ajustements à faire. C'est là que les presets entrent en jeu. Ces outils magiques peuvent transformer votre flux de travail et libérer votre créativité."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Mais... Qu'est-ce qu'un Preset ?"
+        },
+        {
+          "type": "image",
+          "src": "images/jim04506-YX4aDnM0X1C9VJ6G.jpg",
+          "alt": "Avant l'application d'un de mes pré-réglages lightroom",
+          "caption": "Avant l'application d'un de mes pré-réglages lightroom"
+        },
+        {
+          "type": "image",
+          "src": "images/jim04506-2-mnlqM8wX5DhrzQ89.jpg",
+          "alt": "Après l'application d'un de mes pré-réglages lightroom",
+          "caption": "Après l'application d'un de mes pré-réglages lightroom"
+        },
+        {
+          "type": "paragraph",
+          "text": "Un preset est un ensemble de paramètres d'édition préenregistrés que vous pouvez appliquer à vos photos en un seul clic. Ils permettent de gagner du temps et d'assurer une cohérence dans le style de vos images."
+        },
+        {
+          "type": "paragraph",
+          "text": "Que vous utilisiez Adobe Lightroom, Photoshop, ou un autre logiciel de retouche, les presets sont devenus indispensables pour de nombreux photographes. Sur  l'exemple ci -dessus, mon Preset Culinaire renforce le coté craquant du cookie, et le rend légèrement plus vibrant et lumineux !"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Mon Histoire avec les Presets"
+        },
+        {
+          "type": "paragraph",
+          "text": "Un jour, lors d'un shooting particulièrement chargé, j'ai appliqué un Preset que j'avais créé pour des conditions lumineuses similaires. En un instant, mes photos ont pris vie, et j'ai pu livrer les images à mon client bien plus rapidement que prévu."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lorsque j'ai commencé la photographie, j'étais souvent frustré par le temps que prenait l'édition de chaque photo. Je cherchais un moyen d'accélérer ce processus sans sacrifier la qualité. C'est alors que j'ai découvert les presets. Ils m'ont permis de me concentrer sur la prise de vue et de réduire le temps passé devant l'écran."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Comment installer, utiliser les Presets et quels sont leurs avantages?"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Application"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sélection de Photo :",
+            "Importez une photo dans Lightroom et passez en mode \"Développement\".",
+            "Application du Preset :",
+            "Dans le panneau de droite, faites défiler jusqu'à la section \"Paramètres prédéfinis\" (ou \"Presets\").",
+            "Cliquez sur le preset que vous souhaitez appliquer. Vous verrez instantanément les modifications s'appliquer à votre photo. Vérifiez pour les presets noir et blanc que N & B est activé sur lightroom.",
+            "Personnalisation :",
+            "Après avoir appliqué le preset, vous pouvez ajuster les paramètres individuels (comme l'exposition, le contraste, ou la balance des blancs) pour parfaire le rendu selon vos goûts.",
+            "Les presets sont un point de départ ; n'hésitez pas à les adapter pour obtenir le résultat souhaité."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Installation"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Téléchargement :",
+            "Commencez par télécharger le fichier compressé (souvent au format .zip) contenant vos presets préférés.",
+            "Décompression :",
+            "Une fois le fichier téléchargé, décompressez-le pour accéder aux fichiers de presets. Vous pouvez utiliser des outils intégrés à votre système d'exploitation ou des logiciels tiers comme WinRAR ou 7-Zip.",
+            "Ouverture de Lightroom :",
+            "Lancez Adobe Lightroom sur votre ordinateur.",
+            "Accéder au Module Développement :",
+            "Passez en mode \"Développement\" en cliquant sur l'icône correspondante dans le coin supérieur droit de l'interface Lightroom.",
+            "Importation des Presets :",
+            "Dans le panneau de droite, trouvez la section \"Paramètres prédéfinis\" (ou \"Presets\" selon la version de Lightroom).",
+            "Cliquez sur le signe \"+\" et sélectionnez \"Importer\" pour ajouter de nouveaux presets.",
+            "Naviguez jusqu'au dossier où vous avez décompressé vos presets, sélectionnez-les, et cliquez sur \"Importer\".",
+            "Redémarrage de Lightroom :",
+            "Il peut être nécessaire de redémarrer Lightroom pour que les nouveaux presets apparaissent dans la liste."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Les Avantages"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Gain de Temps : Appliquer un preset est bien plus rapide que d'ajuster manuellement chaque paramètre.",
+            "Cohérence : Utiliser les mêmes presets pour une série de photos garantit une uniformité dans le rendu final.",
+            "Créativité : Les presets permettent d'explorer différents styles et ambiances sans effort."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Offre Spéciale : Téléchargez Mon Preset Gratuit !"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pour vous remercier de votre lecture et vous aider à démarrer avec les presets, je vous offre l'un de mes presets préférés gratuitement."
+        },
+        {
+          "type": "paragraph",
+          "text": "Remplissez le Formulaire ici pour Obtenir votre Preset Gratuit !"
+        },
+        {
+          "type": "image",
+          "src": "images/black-minimalist-photo-preset-download-pinterest-pin-A0xlk361k7Ce7bDz.png",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "Il suffit de vous inscrire à ma newsletter en cliquant sur le lien ci-dessous, et vous recevrez le preset directement dans votre boîte de réception."
+        },
+        {
+          "type": "button",
+          "href": "https://sibforms.com/serve/MUIFACApsYvSEWz_mYsYHxFRj1urMqeUSS10e4YYfzDrafRnyjLIzABj9T3dl2kLSPb7CUXiQ4QROlHX_C-xLzFNLQeXvVGMIKoHy4U_5Q4TFZCAa96xBkx6pp20uRFEdzw9aehPOwiiQ2Q-mESMPkfdLPHXfTcacC8CpCIyLLFZv2rrrYBinJ9teKt0a8mRSR7lOHiIieEDY3Ov",
+          "label": "Obtenir le preset gratuit"
+        },
+        {
+          "type": "paragraph",
+          "text": "Attention : Ce Preset offre une base cohérente, mais chaque photo est unique et peut nécessiter des ajustements."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Conclusion : Facilitez vos Retouches !"
+        },
+        {
+          "type": "paragraph",
+          "text": "Les presets sont bien plus qu'un simple outil d'édition ; ils sont une porte ouverte vers une nouvelle manière de travailler, plus efficace et créative. En intégrant les presets dans votre flux de travail, vous pouvez vous concentrer sur ce qui compte vraiment : capturer des moments uniques et raconter des histoires à travers vos photos."
+        },
+        {
+          "type": "image",
+          "src": "images/jim04307-3-A3Q2nB6LnGfGKa6D.jpg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "list",
+          "items": [
+            "Restez connecté : Abonnez-vous à ma newsletter pour recevoir plus de conseils et d'offres exclusives."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maitrisez-les-bases-de-la-photographie-le-guide-pour-transformer-vos-cliches-en-chef-doeuvre",
+      "file": "maitrisez-les-bases-de-la-photographie-le-guide-pour-transformer-vos-cliches-en-chef-doeuvre.html",
+      "slug": "maitrisez-les-bases-de-la-photographie-le-guide-pour-transformer-vos-cliches-en-chef-doeuvre",
+      "title": "Maîtrisez les bases de la photographie : le guide pour transformer vos clichés en chef-d'œuvre",
+      "date": "2025-02-15",
+      "dateLabel": "15 février 2025",
+      "minutes": "4",
+      "excerpt": "Triangle d'exposition, lumière et composition : les bases pour transformer un cliché en image.",
+      "cover": "images/img_20190605_163046-A3QO9bkDXKCn717V.jpg",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Avez-vous déjà pris une photo en espérant capturer la magie d’un instant... pour vous retrouver avec un résultat décevant ? Ne vous inquiétez pas, on est tous passés par là."
+        },
+        {
+          "type": "paragraph",
+          "text": "Je me souviens de mes débuts, quand je jonglais avec les réglages sans vraiment comprendre ce que je faisais. Jusqu’au jour où j’ai découvert une vérité simple : la photographie, ce n’est pas juste appuyer sur un bouton, c’est une danse entre lumière, technique et créativité.\nAujourd’hui, je vous emmène dans cette aventure, pour découvrir les bases qui transforment des clichés ordinaires en images extraordinaires. Et tout commence par le fameux triangle d’exposition."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1. Le triangle d’exposition : la base de tout"
+        },
+        {
+          "type": "paragraph",
+          "text": "La vitesse d’obturation (shutter speed) : C’est le temps pendant lequel votre capteur est exposé à la lumière. Un temps rapide fige l’action, idéal pour capturer une goutte d’eau en suspension. Un temps plus long crée de beaux flous de mouvement, comme des traînées lumineuses en ville."
+        },
+        {
+          "type": "paragraph",
+          "text": "L’ouverture (f/stop) : Imaginez l’ouverture de votre objectif comme une porte. Plus elle est grande (petit chiffre f), plus la lumière entre. Cela crée ce bel effet flou à l’arrière-plan, qu’on appelle le bokeh. Une petite ouverture (grand chiffre f) est parfaite pour les paysages nets."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "images/jim02164-3-m5KLkaE7BOcyBrPn.jpg",
+            "images/jim02164-YleqbBlkwxsZGB76.jpg",
+            "images/jim02164-2-AR0MWONz6oiJrQna.jpg"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Ici, la photo a été sous-exposée"
+        },
+        {
+          "type": "paragraph",
+          "text": "Voici la photo d'origine..."
+        },
+        {
+          "type": "paragraph",
+          "text": "Et enfin la surexposée !"
+        },
+        {
+          "type": "paragraph",
+          "text": "La sensibilité ISO : Pensez-y comme à la capacité de votre appareil à voir dans l’obscurité. Plus l’ISO est élevé, plus il est sensible à la lumière… mais attention au bruit numérique (noise) qui peut dégrader vos images."
+        },
+        {
+          "type": "paragraph",
+          "text": "Voici un exemple où la photo a subit des expositions différentes :"
+        },
+        {
+          "type": "paragraph",
+          "text": "La lumière est l’âme de la photographie, et le triangle d’exposition est votre outil pour la maîtriser. Il se compose de trois réglages principaux :"
+        },
+        {
+          "type": "paragraph",
+          "text": "Astuce pratique : Lorsque vous ajustez un des côtés du triangle, les deux autres doivent s’adapter pour équilibrer l’exposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "A vous d'adapter la lumière en fonction de l'ambiance que vous voulez retranscrire! Ma préférée ici est celle qui est la moins exposée (j'ai rajouté une touche de lumière sur le pignon de pin pour le mettre en valeur, mais vous avez compris l'idée)"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2. Jouer avec la lumière : votre meilleur allié"
+        },
+        {
+          "type": "paragraph",
+          "text": "La lumière naturelle est une palette infinie pour vos photos. En photographie, on distingue souvent :"
+        },
+        {
+          "type": "image",
+          "src": "images/img_20190530_075435-Yanqx3WGP1Sl1X2M.jpg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "La lumière dure : Plus directe, elle peut créer des contrastes saisissants. Elle est parfaite pour un style audacieux ou pour jouer avec les ombres."
+        },
+        {
+          "type": "paragraph",
+          "text": "La lumière douce : Idéale pour les portraits, elle adoucit les ombres et met en valeur les détails. Elle est omniprésente au lever ou au coucher du soleil (ce qu’on appelle l’heure dorée)."
+        },
+        {
+          "type": "image",
+          "src": "images/img_20221108_180951-mePbE063JQtoMWLa.png",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "Mon conseil : Prenez le temps d’observer la lumière autour de vous avant de déclencher. Un changement de perspective peut tout transformer."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3. Composition : donner de la force à vos images"
+        },
+        {
+          "type": "paragraph",
+          "text": "Un bon photographe ne capture pas seulement ce qu’il voit, il raconte une histoire. Voici trois règles simples pour structurer vos clichés :"
+        },
+        {
+          "type": "paragraph",
+          "text": "La règle des tiers : Imaginez votre image divisée en neuf sections égales. Placez vos sujets sur les lignes ou aux intersections pour un rendu équilibré (Paramétrable sur téléphone et appareil photo)."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "images/img_20190528_124238-m5KLkXrBBZUqLqQN.jpg",
+            "images/test-regle-des-tiers_1-mePbQoKZyVfgVzMr.jpg",
+            "images/img_20221109_072413-YanqQoO6LohkEl7p.jpg"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Voici 3 photos qui illustre les bases de la composition : - lignes directrices - la règle des tiers - le minimalisme"
+        },
+        {
+          "type": "paragraph",
+          "text": "Les lignes directrices : Utilisez les lignes naturelles (routes, chemins, etc.) pour guider l’œil vers votre sujet."
+        },
+        {
+          "type": "paragraph",
+          "text": "Le minimalisme : Parfois, moins, c’est plus. Retirez les éléments superflus et laissez votre sujet respirer dans le cadre."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4. Trouvez votre style : exprimez votre créativité"
+        },
+        {
+          "type": "list",
+          "items": [
+            "La technique est essentielle, mais c’est votre vision qui rend vos photos uniques. Demandez-vous toujours :",
+            "Que veux-je raconter ?",
+            "Quelle émotion cette photo évoque-t-elle ?"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Expérimentez avec des perspectives inhabituelles, des reflets ou même des couleurs. C’est en osant sortir des sentiers battus que vous trouverez votre style."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "images/jim01608-2-dJo5W3x5K0fbpBXD.jpg",
+            "images/img_20190527_103729-AVL1QoEV1ZSoWP52.jpg"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Conclusion : devenez maître de votre appareil"
+        },
+        {
+          "type": "paragraph",
+          "text": "La photographie est un mélange de science et d’art, une danse entre technique et instinct. En maîtrisant les bases – le triangle d’exposition, la lumière, la composition – vous ouvrirez la porte à un monde infini de possibilités créatives."
+        },
+        {
+          "type": "image",
+          "src": "images/img_20190605_163046-A3QO9bkDXKCn717V.jpg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "📸 Prêt à sublimer vos clichés ? Si cet article vous a inspiré, laissez un message ou partagez vos créations avec moi sur ma page instagram. Je suis curieux de découvrir votre univers !"
+        },
+        {
+          "type": "html",
+          "html": "<a href=\"https://www.instagram.com/iyc_studio/\">Voir Instagram IYC Studio</a>"
+        },
+        {
+          "type": "paragraph",
+          "text": "Et rappelez-vous : la perfection vient avec la pratique. Prenez votre appareil, sortez, et capturez le monde à votre manière."
+        }
+      ]
+    },
+    {
+      "id": "3-cles-pour-decouvrir-la-photographie-en-2025-et-explorer-votre-creativite-rapidement",
+      "file": "3-cles-pour-decouvrir-la-photographie-en-2025-et-explorer-votre-creativite-rapidement.html",
+      "slug": "3-cles-pour-decouvrir-la-photographie-en-2025-et-explorer-votre-creativite-rapidement",
+      "title": "3 clés pour découvrir la photographie en 2025 et explorer votre créativité rapidement",
+      "date": "2025-01-15",
+      "dateLabel": "15 janvier 2025",
+      "minutes": "3",
+      "excerpt": "Trois clés simples pour maîtriser la photographie, capturer vos moments préférés et exprimer votre vision.",
+      "cover": "images/jim01785-1-AE0aqw1yBBiDb7VG.jpg",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Et si 2025 était l’année où vous décidiez de développer votre créativité et de capturer les instants précieux autour de vous ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Recevoir un appareil photo à Noël ou simplement vouloir explorer un nouveau hobby peut sembler un défi au début. Mais avec les bonnes bases, vous pouvez transformer cette résolution en une aventure passionnante.\nDans cet article, je vous partage 3 clés essentielles pour faire de la photographie une véritable source de plaisir et d’expression personnelle cette année."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1. Maîtrisez les bases techniques : débloquez tout le potentiel de votre appareil"
+        },
+        {
+          "type": "paragraph",
+          "text": "Astuce rapide : Testez le mode priorité ouverture (A ou Av). Cela vous permettra de jouer avec la profondeur de champ et de créer un magnifique effet bokeh."
+        },
+        {
+          "type": "paragraph",
+          "text": "La technique est le socle de toute belle photo. Que vous soyez débutant ou que vous souhaitiez renforcer vos compétences, comprendre des notions comme l’ouverture, la vitesse d’obturation et l’ISO peut transformer vos clichés."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "images/jim02206-2-dJo5lw2eBOuQw2E3.jpg",
+            "images/jim02202-Yanq7vggk1UjzWEl.jpg",
+            "images/jim02196-YNqPDl3r0ZF0w77D.jpg"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Même arbre, angle de vue différent!"
+        },
+        {
+          "type": "paragraph",
+          "text": "On passe d'une vue d'ensemble..."
+        },
+        {
+          "type": "paragraph",
+          "text": "À de la macroscopie !"
+        },
+        {
+          "type": "paragraph",
+          "text": "Entraînez-vous : Prenez une tasse de café posée sur une table à côté d’une fenêtre ensoleillée. Ajustez vos réglages pour capturer les ombres douces ou le trait de lumière qui illumine la scène."
+        },
+        {
+          "type": "paragraph",
+          "text": "Voici une illustration du propos avec un arbre :"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2. Transformez vos clichés en histoires émotionnelles"
+        },
+        {
+          "type": "paragraph",
+          "text": "La photographie ne se limite pas à des réglages techniques. Elle capte des histoires, des ambiances, et surtout des émotions. Prenez le temps de regarder autour de vous, cherchez un élément ou un moment qui vous touche."
+        },
+        {
+          "type": "image",
+          "src": "images/chat-m2WabWaZPjTKb3Wj.jpg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "Exemple : Une simple balade dans un parc peut révéler des instants magiques – un rayon de soleil qui traverse les branches, un chat qui fixe une mouche, une goutte d’eau suspendue à une feuille."
+        },
+        {
+          "type": "paragraph",
+          "text": "Question à se poser : « Que veux-je transmettre à travers cette photo ? »"
+        },
+        {
+          "type": "image",
+          "src": "images/jim01905-2-ALp7Xw41XWcM2gyq.jpg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3. Partagez votre vision et faites évoluer votre créativité"
+        },
+        {
+          "type": "paragraph",
+          "text": "Partager vos clichés est un excellent moyen de progresser et d’échanger avec d’autres passionnés. Cela peut être sur Instagram, un blog ou même lors d’une exposition personnelle. Challenge : Créez un thème pour vos photos, comme « Hivers lumineux » ou « Nouveaux départs »."
+        },
+        {
+          "type": "html",
+          "html": "<a href=\"https://www.instagram.com/iyc_studio/\">Voir Instagram IYC Studio</a>"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cela donnera de la cohérence à votre série. Idée pratique : Imprimez vos meilleures photos et organisez une mini-exposition chez vous. Invitez vos proches à découvrir votre travail."
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "images/jim02063-AGBnrPLZ8jU1kjN7.jpg",
+            "images/jim02155-AE0aqw5lJ1uXw2xK.jpg",
+            "images/jim02260-AQEDXaQrlyUx0QX4.jpg"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Ici j'ai créé une série de photos que j'ai appelé \" À Fleur d’Eau \" : j'ai pris la perspective du sol, en essayant de jouer avec les flaques d'eau!"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Conclusion : Faites de 2024 votre année créative !"
+        },
+        {
+          "type": "paragraph",
+          "text": "En suivant ces 3 clés, vous découvrirez non seulement les bases de la photographie, mais aussi une nouvelle façon de voir le monde. Profitez de ce début d’année pour capturer ce qui vous inspire et faire de votre appareil photo le complice de votre créativité."
+        },
+        {
+          "type": "image",
+          "src": "images/whatsapp-image-2024-12-28-at-21.49.35-YKbEvb51QVH0njNr.jpeg",
+          "alt": "Photographie IYC Studio",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "Alors, si vous venez d’avoir un appareil photo pour Noël et que vous souhaitez explorer tout son potentiel, restez connectés : des conseils pratiques et des idées créatives arrivent bientôt !"
+        }
+      ]
+    }
+  ]
+}

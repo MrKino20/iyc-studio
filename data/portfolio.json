@@ -1,0 +1,131 @@
+{
+  "projects": [
+    {
+      "id": "mariage",
+      "slug": "mariage",
+      "title": "Le jour des mariés",
+      "category": "Mariage",
+      "location": "",
+      "year": "",
+      "excerpt": "La lumière douce, la table dressée, et l'entrée de la mariée.",
+      "story": [
+        "Un mariage se raconte dans les détails autant que dans les regards. Ici, la lumière reste douce : le menu posé sur la nappe, le prénom écrit à la main, le verre qui attend.",
+        "Puis la mariée entre. La robe prend la pièce, le voile bouge, et le sourire fait le reste. J'ai photographié ce jour comme un récit, sans le presser."
+      ],
+      "cover": "images/jim00820-2-Zw9YYvV7l4iJMBlU.jpg",
+      "coverPosition": "50% 33%",
+      "photos": [
+        "images/jim00820-2-Zw9YYvV7l4iJMBlU.jpg",
+        "images/jim00738-kgVG53UiG5haqvVo.jpg",
+        "images/jim00739-tTrXSubjuCyH0RrS.jpg",
+        "images/jim00782-uvsWbbEa9Q4AaUSa.jpg",
+        "images/jim00794-lGUz7FTb14xpSEbJ.jpg",
+        "images/jim00813-YWe9kgsL9LrVVjE7.jpg",
+        "images/jim00814-2-VPsNBsPWjbIzIfz5.jpg",
+        "images/jim00816-fhAHnSsFwHndvM8R.jpg"
+      ]
+    },
+    {
+      "id": "portraits",
+      "slug": "portraits-bordeaux",
+      "title": "Portraits, à Bordeaux",
+      "category": "Portrait",
+      "location": "Bordeaux",
+      "year": "",
+      "excerpt": "Des visages mis à l'aise, pour un profil, une vitrine, une histoire.",
+      "story": [
+        "Avant de déclencher, je prends le temps. On parle tenue, lieu, et du rendu que tu veux garder. Le portrait vient ensuite, quand la personne oublie un peu l'appareil.",
+        "Lumière naturelle, rues et murs de Bordeaux, et une image qui te ressemble encore dans six mois. C'est le travail que je fais pour les profils professionnels, le personal branding, et les séances simplement pour soi."
+      ],
+      "cover": "images/jim05934-m5KMoRMgEgCLjvK2.jpg",
+      "coverPosition": "50% 34%",
+      "photos": [
+        "images/jim05927-Y4LDrRxKkEfoa0Xo.jpg",
+        "images/jim05923-YBg7aRrWoZTGGjG0.jpg",
+        "images/jim05916-YKb3zR6PL4HWQNbr.jpg",
+        "images/jim05934-m5KMoRMgEgCLjvK2.jpg",
+        "images/jim05943-AzGXb2N40oseWQrN.jpg",
+        "images/jim05947-YD0lxRBpM8tbrP4L.jpg",
+        "images/jim05948-Yan1P50nV2SN321p.jpg",
+        "images/jim02728-mk3qDWPbE5HGnEv0.jpg",
+        "images/jim05563-mk3vBMMk1btNgQaJ.jpg",
+        "images/jim05549-YX4lq92G1Vu1yQpQ.jpg",
+        "images/jim05574-AGB2DjV0jbTq6qvb.jpg",
+        "images/jim05587-m6LZE11Nv3cyNDrj.jpg",
+        "images/jim05617-YKb3exxqNbtW9wE8.jpg",
+        "images/jim05627-YKb3exxq9Gsv19NK.jpg"
+      ]
+    },
+    {
+      "id": "tgs",
+      "slug": "tgs-2025",
+      "title": "TGS 2025",
+      "category": "Événement",
+      "location": "Tokyo Game Show",
+      "year": "2025",
+      "excerpt": "Cosplayers, armures et regards, entre deux allées du salon.",
+      "story": [
+        "Au Tokyo Game Show, les gens arrivent déjà en personnage. Mon travail est de trouver le visage sous le costume, et la lumière qui le rend crédible.",
+        "Armures, néons, maquillage : un reportage d'événement tenu comme une série de portraits. Chaque photo doit pouvoir vivre seule, et toutes ensemble raconter la salle."
+      ],
+      "cover": "images/test-yeux-iron-man-A85ePR83Nxcpvwrp.jpg",
+      "photos": [
+        "images/test-yeux-iron-man-A85ePR83Nxcpvwrp.jpg",
+        "images/jim06793-AR0LwPDQkXFD7g67.jpg",
+        "images/jim06785-2-dOqaWRPOq9CgnrQa.jpg",
+        "images/jim06784-AVL7yM5713CZaEB3.jpg",
+        "images/jim06024-Aq2WE4P79QhRyjkq.jpg",
+        "images/jim06017-Yyv9J8N35vCQNG3K.jpg",
+        "images/jim05987-A1aPGRv5bwtlEaQa.jpg"
+      ]
+    },
+    {
+      "id": "escrime",
+      "slug": "escrime",
+      "title": "Sur la piste",
+      "category": "Événement",
+      "location": "",
+      "year": "",
+      "excerpt": "Escrime historique : le geste est plus rapide que le regard.",
+      "story": [
+        "Sur une piste, tout se joue en une fraction de seconde. J'ai suivi les assauts de près : gardes, lames, et la concentration d'un enfant déjà entièrement dans le combat.",
+        "Le reportage d'événement, pour moi, ce n'est pas une photo de groupe à la fin. C'est le moment où personne ne pense à l'appareil."
+      ],
+      "cover": "images/jim03775-YD0BW4OROQH4Z7jl.jpg",
+      "photos": [
+        "images/jim03775-YD0BW4OROQH4Z7jl.jpg",
+        "images/jim04060-YZ9xRbD8xMCoLyaZ.jpg",
+        "images/jim04064-mv02R7MWkvHK2owe.jpg",
+        "images/jim04065-mp8qR9BWVjUK3aWP.jpg",
+        "images/jim04124-m7V5aKz3KZta7WDN.jpg",
+        "images/jim03964-AQEDgp6xyefDv9gV.jpg",
+        "images/jim03510-m6LjBJVZOyS0yJel.jpg"
+      ]
+    },
+    {
+      "id": "bordeaux-pierre-et-pluie",
+      "slug": "bordeaux-pierre-et-pluie",
+      "title": "Bordeaux, pierre et pluie",
+      "category": "Lieu",
+      "location": "Bordeaux",
+      "year": "",
+      "excerpt": "La ville comme sujet : cours, quais, et la lumière des intérieurs.",
+      "story": [
+        "Bordeaux se laisse photographier quand on lève la tête, ou quand on reste sous la pluie. Une cour ouverte sur le ciel. Les quais des Chartrons, le tramway, les manteaux.",
+        "Et parfois un intérieur qui garde la lumière de la Garonne. Ce projet est une promenade : des lignes, de la pierre, et le rythme de la ville."
+      ],
+      "cover": "images/jim01420-mePvq5qPzGFkMB7E.jpg",
+      "coverPosition": "50% 50%",
+      "photos": [
+        "images/jim01420-mePvq5qPzGFkMB7E.jpg",
+        "images/jim05223-2-YbNBP5yk3JuNWxOq.jpg",
+        "images/whatsapp-image-2025-03-25-at-18.04.37-1-dOqa3WK1GVs3eKq0.jpeg",
+        "images/whatsapp-image-2025-03-25-at-12.05.45-mp8Wz5pQzxUxQeLy.jpeg",
+        "images/whatsapp-image-2025-03-25-at-18.04.37-Aq2WzErx8WiW1k69.jpeg",
+        "images/whatsapp-image-2025-03-25-at-18.04.38-1-A85ekPn9BOcr0GvZ.jpeg",
+        "images/whatsapp-image-2025-03-25-at-18.04.38-2-YKb32zOqyZCkwjab.jpeg",
+        "images/whatsapp-image-2025-03-25-at-18.04.38-dJoZ8naRb0c6rqyD.jpeg"
+      ]
+    }
+  ]
+}
