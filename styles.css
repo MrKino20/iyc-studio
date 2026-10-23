@@ -203,7 +203,7 @@ strong {
 .promo-track {
     display: flex;
     width: max-content;
-    animation: promo-slide 18s linear infinite;
+    animation: promo-slide 14s linear infinite;
 }
 
 .promo-banner p {
@@ -218,18 +218,6 @@ strong {
 @keyframes promo-slide {
     from { transform: translateX(-50%); }
     to { transform: translateX(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .promo-track {
-        animation: none;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .promo-track p[aria-hidden="true"] {
-        display: none;
-    }
 }
 
 .navbar {
