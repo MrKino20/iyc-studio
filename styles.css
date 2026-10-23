@@ -589,6 +589,17 @@ strong {
     margin: 0 auto 2rem;
 }
 
+.cta-section h2.project-cta-title {
+    max-width: none;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .cta-section h2.project-cta-title {
+        white-space: normal;
+    }
+}
+
 /* ==============================================
    FOOTER
    ============================================== */
