@@ -1422,6 +1422,10 @@ strong {
     margin-bottom: 2rem;
 }
 
+.form-honeypot {
+    display: none !important;
+}
+
 .contact-form {
     display: grid;
     grid-template-columns: 1fr 1fr;

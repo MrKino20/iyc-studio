@@ -281,40 +281,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                date: document.getElementById('date').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Simulate API call
-            console.log('Contact Form Data:', formData);
-            
-            // Show success message
-            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Here you would integrate with an actual backend or email service
-            // Example:
-            // fetch('/api/contact', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(formData)
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     alert('Message envoyé avec succès!');
-            // })
-            // .catch(error => {
-            //     alert('Erreur lors de l\'envoi. Veuillez réessayer.');
-            // });
+            const thanks = document.documentElement.lang === 'en'
+                ? 'Thank you. I will reply soon.'
+                : 'Merci pour votre message ! Je vous répondrai dans les plus brefs délais.';
+            const failed = document.documentElement.lang === 'en'
+                ? 'The message could not be sent. Please try again.'
+                : 'Le message n’a pas pu partir. Réessayez.';
+            const submitButton = contactForm.querySelector('[type="submit"]');
+            if (submitButton) submitButton.disabled = true;
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(contactForm)).toString()
+            })
+                .then((response) => {
+                    if (!response.ok) throw new Error('form');
+                    alert(thanks);
+                    contactForm.reset();
+                })
+                .catch(() => {
+                    alert(failed);
+                })
+                .finally(() => {
+                    if (submitButton) submitButton.disabled = false;
+                });
         });
     }
 

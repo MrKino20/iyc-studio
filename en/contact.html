@@ -68,7 +68,12 @@
                 <!-- Contact Form -->
                 <div class="contact-form-container">
                     <h2 data-i18n="contact.formTitle">Send me a message</h2>
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <input type="hidden" name="subject" value="Nouveau message depuis le site IYC Studio">
+                        <p class="form-honeypot" hidden>
+                            <label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                        </p>
                         <div class="form-group">
                             <label for="name" data-i18n="contact.name">Full name *</label>
                             <input type="text" id="name" name="name" required>
