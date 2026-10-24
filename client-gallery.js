@@ -415,11 +415,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         confirmationModal.classList.add('active');
+        if (cancelConfirmation) cancelConfirmation.focus();
+    }
+
+    function closeConfirmation() {
+        confirmationModal.classList.remove('active');
     }
     
     if (cancelConfirmation) {
-        cancelConfirmation.addEventListener('click', function() {
-            confirmationModal.classList.remove('active');
+        cancelConfirmation.addEventListener('click', closeConfirmation);
+    }
+
+    if (confirmationModal) {
+        confirmationModal.addEventListener('click', function(event) {
+            if (event.target === confirmationModal) closeConfirmation();
+        });
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && confirmationModal.classList.contains('active')) {
+                event.preventDefault();
+                closeConfirmation();
+            }
         });
     }
     

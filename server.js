@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const { renderAll, blogImages } = require("./lib/render");
 const { slugify, hashPassword, checkGalleryPassword, clientView } = require("./lib/gallery-auth");
 const { pushGallery, deleteRemoteGallery, pullGallery } = require("./lib/gallery-cloud");
+const { ensurePreview, ensureGalleryPreviews, previewPath } = require("./lib/gallery-preview");
 
 const ROOT = __dirname;
 const PORT = process.env.PORT || 8765;
@@ -220,6 +221,7 @@ function readGalleries() {
 
 async function mirrorGallery(gallery) {
   try {
+    await ensureGalleryPreviews(ROOT, gallery);
     await pushGallery(ROOT, gallery);
   } catch (error) {
     console.error("Envoi Netlify impossible :", error.message);
@@ -511,7 +513,9 @@ async function handleApi(req, res, url) {
     const gallery = galleryFromClient(req);
     const filePath = gallery && privatePhotoPath(gallery, clientPhotoMatch[1]);
     if (!filePath) return send(res, 401, JSON.stringify({ error: "Connexion requise" }));
-    return streamFile(res, filePath);
+    const preview = await ensurePreview(filePath);
+    if (!preview) return send(res, 404, JSON.stringify({ error: "Photo introuvable" }));
+    return streamFile(res, preview);
   }
   if (req.method === "POST" && url.pathname === "/api/client/selection") {
     const body = await readBody(req);
@@ -575,7 +579,10 @@ async function handleApi(req, res, url) {
     const gallery = galleryFile.galleries.find((item) => item.id === galleryPhotoMatch[1]);
     if (!gallery) return send(res, 404, JSON.stringify({ error: "Galerie introuvable" }));
     const filePath = privatePhotoPath(gallery, galleryPhotoMatch[2]);
-    if (filePath) fs.rmSync(filePath, { force: true });
+    if (filePath) {
+      fs.rmSync(filePath, { force: true });
+      fs.rmSync(previewPath(filePath), { force: true });
+    }
     gallery.photos = gallery.photos.filter((photo) => photo.id !== galleryPhotoMatch[2]);
     if (gallery.selection) gallery.selection.photoIds = gallery.selection.photoIds.filter((id) => id !== galleryPhotoMatch[2]);
     writeJson("galleries.json", galleryFile);

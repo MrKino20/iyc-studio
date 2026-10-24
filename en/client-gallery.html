@@ -173,19 +173,19 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <div id="confirmationModal" class="modal">
+    <div id="confirmationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
         <div class="modal-content confirmation-modal">
-            <h2 data-i18n="gallery.confirmTitle">Confirm your selection</h2>
-            <p><span data-i18n="gallery.confirmLead">You have selected</span> <strong><span id="confirmCount">0</span> <span data-i18n="gallery.confirmPhotos">photo(s)</span></strong>.</p>
-            <p data-i18n="gallery.confirmText">Do you want to confirm this selection? This action is final.</p>
+            <h2 id="confirmTitle" data-i18n="gallery.confirmTitle">This selection is final</h2>
+            <p><span data-i18n="gallery.confirmLead">You have chosen</span> <strong><span id="confirmCount">0</span> <span data-i18n="gallery.confirmPhotos">photo(s)</span></strong>.</p>
+            <p class="confirmation-warning" data-i18n="gallery.confirmText">Once you confirm, you will not be able to change your mind or edit this selection.</p>
             
             <div class="selected-photos-preview" id="selectedPhotosPreview">
                 <!-- Thumbnails of selected photos will appear here -->
             </div>
             
             <div class="modal-actions">
-                <button id="cancelConfirmation" class="cta-button-secondary" data-i18n="gallery.backBtn">Back</button>
-                <button id="finalConfirmation" class="cta-button" data-i18n="gallery.confirmBtn">Confirm my selection</button>
+                <button id="cancelConfirmation" type="button" class="cta-button-secondary" data-i18n="gallery.backBtn">Go back</button>
+                <button id="finalConfirmation" type="button" class="cta-button" data-i18n="gallery.confirmBtn">I confirm</button>
             </div>
         </div>
     </div>

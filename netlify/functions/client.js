@@ -121,7 +121,7 @@ exports.handler = async (event) => {
       const bytes = Buffer.from(await file.arrayBuffer());
       return {
         statusCode: 200,
-        headers: { "Content-Type": TYPES[photo.ext], "Cache-Control": "private, no-store" },
+        headers: { "Content-Type": "image/jpeg", "Cache-Control": "private, no-store" },
         body: bytes.toString("base64"),
         isBase64Encoded: true,
       };

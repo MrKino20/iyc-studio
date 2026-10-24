@@ -1714,20 +1714,33 @@ strong {
     left: 16px;
     width: 42px;
     height: 42px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     border-radius: 50%;
     border: 1px solid var(--border-color);
-    background: #fff;
+    background: rgba(255, 255, 255, 0.92);
     color: #1c1c1c;
-    font-size: 1.25rem;
-    line-height: 1;
+    font-size: 0;
+    line-height: 0;
     text-decoration: none;
+}
+
+.gallery-back::before,
+.project-back::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateX(2px) rotate(45deg);
 }
 
 .gallery-back:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
+    background: #fff;
 }
 
 .password-container {
@@ -2022,7 +2035,9 @@ strong {
 }
 
 .photo-number {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.12);
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -2114,7 +2129,9 @@ strong {
     transform: translateX(-50%);
     display: flex;
     gap: 2rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.12);
     padding: 1rem 2rem;
     border-radius: 4px;
 }
@@ -2122,6 +2139,11 @@ strong {
 .confirmation-modal,
 .success-modal {
     text-align: center;
+}
+
+.confirmation-warning {
+    font-weight: 700;
+    margin-top: 0.75rem;
 }
 
 .selected-photos-preview {
@@ -2144,6 +2166,7 @@ strong {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 2rem;
 }
 
@@ -2727,15 +2750,6 @@ strong {
     text-decoration: none;
 }
 
-.project-back::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-left: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateX(2px) rotate(45deg);
-}
-
 .project-back:hover {
     background: #fff;
 }
@@ -2865,7 +2879,7 @@ strong {
     transform: translateX(-6px);
 }
 
-.project-next a:last-child:hover {
+.project-next a:last-child:not(:first-child):hover {
     transform: translateX(6px);
 }
 

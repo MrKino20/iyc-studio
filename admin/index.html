@@ -33,6 +33,16 @@
         .item img { width: 72px; height: 72px; object-fit: cover; }
         .editor { display: grid; grid-template-columns: 1fr 280px; gap: 22px; align-items: start; }
         .block { background: #fff; border: 1px solid var(--line); padding: 12px; margin-bottom: 10px; }
+        .block.dragging { opacity: 0.4; }
+        .block.drag-over { outline: 2px solid var(--sage); }
+        .block-head { cursor: grab; user-select: none; }
+        .block-head:active { cursor: grabbing; }
+        .block-add { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+        .block-photo { width: 100%; max-height: 240px; object-fit: contain; background: #f3f3f3; margin: 8px 0; }
+        .gallery-edit { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin: 8px 0; }
+        .gallery-edit .thumb { cursor: grab; background: #fff; border: 1px solid var(--line); padding: 6px; }
+        .gallery-edit .thumb.drag-over { outline: 2px solid var(--sage); }
+        .gallery-edit img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; pointer-events: none; }
         .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
         .photos button, .library button { padding: 0; border: 2px solid transparent; background: #fff; position: relative; }
         .photos img, .library img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
@@ -124,7 +134,19 @@
             render();
         }
 
+        function syncEditingForm() {
+            const form = document.getElementById("editor");
+            const editing = state.editing;
+            if (!form || !editing || !Array.isArray(editing.blocks) || !form.elements.title) return;
+            editing.title = form.elements.title.value;
+            editing.date = form.elements.date.value;
+            editing.dateLabel = form.elements.dateLabel.value;
+            editing.minutes = form.elements.minutes.value;
+            editing.excerpt = form.elements.excerpt.value;
+        }
+
         function render() {
+            syncEditingForm();
             const main = document.getElementById("main");
             if (state.view === "password") return renderPassword(main);
             if (state.view === "posts") return state.editing ? renderPostEditor(main) : renderPosts(main);
@@ -389,12 +411,17 @@
                     <input id="coverFile" type="file" accept="image/*">
                     ${post.cover ? `<img src="/${post.cover}" alt="" style="width:180px;height:120px;object-fit:cover">` : ""}
                     <h2>Contenu</h2>
+                    <p class="hint">Glisse un bloc par sa barre du haut pour le déplacer, par exemple pour échanger deux photos. Clique Enregistrer pour mettre l'article à jour.</p>
                     <div id="blocks"></div>
-                    <div class="row">
-                        <button class="ghost" type="button" id="addText">+ Texte</button>
+                    <div class="block-add">
                         <button class="ghost" type="button" id="addHeading">+ Titre</button>
+                        <button class="ghost" type="button" id="addSubheading">+ Sous-titre</button>
+                        <button class="ghost" type="button" id="addText">+ Paragraphe</button>
+                        <button class="ghost" type="button" id="addHtml">+ Texte avec lien</button>
                         <button class="ghost" type="button" id="addImage">+ Photo</button>
+                        <button class="ghost" type="button" id="addGallery">+ Groupe de photos</button>
                         <button class="ghost" type="button" id="addList">+ Liste</button>
+                        <button class="ghost" type="button" id="addButton">+ Bouton</button>
                     </div>
                     <div class="row" style="margin-top:16px">
                         <button class="primary" type="submit">Enregistrer</button>
@@ -410,8 +437,12 @@
             post.blocks.forEach((block, index) => mount.append(blockNode(post, block, index)));
             document.getElementById("addText").onclick = () => { post.blocks.push({ type: "paragraph", text: "" }); render(); };
             document.getElementById("addHeading").onclick = () => { post.blocks.push({ type: "heading", level: 2, text: "" }); render(); };
+            document.getElementById("addSubheading").onclick = () => { post.blocks.push({ type: "heading", level: 3, text: "" }); render(); };
+            document.getElementById("addHtml").onclick = () => { post.blocks.push({ type: "html", html: "" }); render(); };
             document.getElementById("addImage").onclick = () => { post.blocks.push({ type: "image", src: "", alt: "", caption: "" }); render(); };
+            document.getElementById("addGallery").onclick = () => { post.blocks.push({ type: "gallery", images: [] }); render(); };
             document.getElementById("addList").onclick = () => { post.blocks.push({ type: "list", items: [""] }); render(); };
+            document.getElementById("addButton").onclick = () => { post.blocks.push({ type: "button", label: "", href: "" }); render(); };
             document.getElementById("editor").onsubmit = async (event) => {
                 event.preventDefault();
                 const data = Object.fromEntries(new FormData(event.target));
@@ -439,39 +470,121 @@
         function blockNode(post, block, index) {
             const wrap = document.createElement("div");
             wrap.className = "block";
-            const controls = `<div class="row"><strong>${labelOf(block)}</strong><span>
+            const controls = `<div class="row block-head" data-drag draggable="true"><strong>${labelOf(block)}</strong><span>
                 <button class="ghost" type="button" data-up>Monter</button>
                 <button class="ghost" type="button" data-down>Descendre</button>
                 <button class="danger" type="button" data-del>Retirer</button></span></div>`;
             wrap.innerHTML = controls + fieldsOf(block);
+            const handle = wrap.querySelector("[data-drag]");
+            handle.ondragstart = (event) => {
+                if (event.target.closest("button")) {
+                    event.preventDefault();
+                    return;
+                }
+                wrap.classList.add("dragging");
+                event.dataTransfer.effectAllowed = "move";
+                event.dataTransfer.setData("text/plain", "block:" + index);
+            };
+            handle.ondragend = () => wrap.classList.remove("dragging");
+            wrap.ondragover = (event) => {
+                event.preventDefault();
+                wrap.classList.add("drag-over");
+            };
+            wrap.ondragleave = (event) => {
+                if (!wrap.contains(event.relatedTarget)) wrap.classList.remove("drag-over");
+            };
+            wrap.ondrop = (event) => {
+                const raw = event.dataTransfer.getData("text/plain");
+                wrap.classList.remove("drag-over");
+                if (!raw.startsWith("block:")) return;
+                event.preventDefault();
+                const from = Number(raw.slice(6));
+                if (Number.isNaN(from) || from === index) return;
+                const [moved] = post.blocks.splice(from, 1);
+                post.blocks.splice(index, 0, moved);
+                render();
+            };
             wrap.querySelector("[data-up]").onclick = () => { if (index > 0) { swap(post.blocks, index, index - 1); render(); } };
             wrap.querySelector("[data-down]").onclick = () => { if (index < post.blocks.length - 1) { swap(post.blocks, index, index + 1); render(); } };
             wrap.querySelector("[data-del]").onclick = () => { post.blocks.splice(index, 1); render(); };
             wrap.querySelectorAll("[data-field]").forEach((field) => {
                 if (field.dataset.field === "items") return;
-                field.oninput = () => { block[field.dataset.field] = field.value; };
+                field.oninput = () => {
+                    block[field.dataset.field] = field.dataset.field === "level" ? Number(field.value) : field.value;
+                };
             });
             const file = wrap.querySelector("[data-file]");
             if (file) file.onchange = async (event) => {
                 block.src = await upload(event.target.files[0]);
+                if (!block.alt) block.alt = block.caption || "";
                 render();
             };
+            const galleryFiles = wrap.querySelector("[data-gallery-files]");
+            if (galleryFiles) galleryFiles.onchange = async (event) => {
+                block.images = block.images || [];
+                for (const item of event.target.files) {
+                    block.images.push({ src: await upload(item), alt: "" });
+                }
+                render();
+            };
+            wrap.querySelectorAll("[data-gallery-remove]").forEach((button) => {
+                button.onclick = () => {
+                    block.images.splice(Number(button.dataset.galleryRemove), 1);
+                    render();
+                };
+            });
+            wrap.querySelectorAll(".thumb").forEach((thumb) => {
+                thumb.ondragstart = (event) => {
+                    event.stopPropagation();
+                    thumb.classList.add("dragging");
+                    event.dataTransfer.effectAllowed = "move";
+                    event.dataTransfer.setData("text/plain", "photo:" + thumb.dataset.photoIndex);
+                };
+                thumb.ondragend = () => thumb.classList.remove("dragging");
+                thumb.ondragover = (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    thumb.classList.add("drag-over");
+                };
+                thumb.ondragleave = () => thumb.classList.remove("drag-over");
+                thumb.ondrop = (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const raw = event.dataTransfer.getData("text/plain");
+                    if (!raw.startsWith("photo:")) return;
+                    const from = Number(raw.slice(6));
+                    const to = Number(thumb.dataset.photoIndex);
+                    if (Number.isNaN(from) || from === to) return;
+                    const [moved] = block.images.splice(from, 1);
+                    block.images.splice(to, 0, moved);
+                    render();
+                };
+            });
             return wrap;
         }
 
         function fieldsOf(block) {
-            if (block.type === "paragraph") return `<textarea data-field="text">${escapeHtml(block.text || "")}</textarea>`;
-            if (block.type === "heading") return `<input data-field="text" value="${escapeAttr(block.text || "")}">`;
-            if (block.type === "html") return `<textarea data-field="html">${escapeHtml(block.html || "")}</textarea>`;
-            if (block.type === "button") return `<input data-field="label" value="${escapeAttr(block.label || "")}"><input data-field="href" value="${escapeAttr(block.href || "")}">`;
-            if (block.type === "list") return `<textarea data-field="items">${escapeHtml((block.items || []).join("\n"))}</textarea>`;
-            if (block.type === "image") return `${block.src ? `<img src="/${block.src}" alt="" style="width:120px;height:80px;object-fit:cover">` : ""}<input data-file type="file" accept="image/*"><input data-field="caption" placeholder="Légende" value="${escapeAttr(block.caption || "")}">`;
-            if (block.type === "gallery") return `<p class="hint">${(block.images || []).length} photos dans ce groupe. Pour en ajouter, crée un nouveau bloc photo.</p>`;
+            if (block.type === "paragraph") return `<textarea data-field="text" placeholder="Le paragraphe">${escapeHtml(block.text || "")}</textarea>`;
+            if (block.type === "heading") {
+                const level = Number(block.level) === 3 ? 3 : 2;
+                return `<select data-field="level"><option value="2" ${level === 2 ? "selected" : ""}>Grand titre</option><option value="3" ${level === 3 ? "selected" : ""}>Sous-titre</option></select><input data-field="text" value="${escapeAttr(block.text || "")}" placeholder="Le titre">`;
+            }
+            if (block.type === "html") return `<textarea data-field="html" placeholder="Texte, avec un lien si besoin : &lt;a href=&quot;https://...&quot;&gt;voir&lt;/a&gt;">${escapeHtml(block.html || "")}</textarea>`;
+            if (block.type === "button") return `<input data-field="label" placeholder="Texte du bouton" value="${escapeAttr(block.label || "")}"><input data-field="href" placeholder="Adresse du lien" value="${escapeAttr(block.href || "")}">`;
+            if (block.type === "list") return `<textarea data-field="items" placeholder="Une ligne par élément">${escapeHtml((block.items || []).join("\n"))}</textarea>`;
+            if (block.type === "image") return `${block.src ? `<img class="block-photo" src="/${block.src}" alt="">` : `<p class="hint">Choisis une photo.</p>`}<input data-file type="file" accept="image/*"><input data-field="caption" placeholder="Légende" value="${escapeAttr(block.caption || "")}"><input data-field="alt" placeholder="Description de la photo" value="${escapeAttr(block.alt || "")}">`;
+            if (block.type === "gallery") {
+                const images = (block.images || []).map((image) => typeof image === "string" ? { src: image, alt: "" } : { src: image.src || "", alt: image.alt || "" });
+                block.images = images;
+                const thumbs = images.map((image, imageIndex) => `<div class="thumb" data-photo-index="${imageIndex}" draggable="true"><img src="/${image.src}" alt=""><button class="danger" type="button" data-gallery-remove="${imageIndex}">Retirer</button></div>`).join("");
+                return `<div class="gallery-edit">${thumbs}</div><input data-gallery-files type="file" accept="image/*" multiple><p class="hint">Glisse les photos de ce groupe pour les classer.</p>`;
+            }
             return "";
         }
 
         function labelOf(block) {
-            return { paragraph: "Texte", heading: "Titre", image: "Photo", gallery: "Groupe de photos", list: "Liste", html: "Texte avec lien", button: "Bouton" }[block.type] || block.type;
+            if (block.type === "heading") return Number(block.level) === 3 ? "Sous-titre" : "Titre";
+            return { paragraph: "Paragraphe", image: "Photo", gallery: "Groupe de photos", list: "Liste", html: "Texte avec lien", button: "Bouton" }[block.type] || block.type;
         }
 
         function renderGalleries(main) {
