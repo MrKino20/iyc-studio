@@ -42,26 +42,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            
-            // Animate hamburger icon
-            const spans = this.querySelectorAll('span');
-            spans[0].style.transform = navMenu.classList.contains('active') ? 'rotate(45deg) translateY(7px)' : 'none';
-            spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = navMenu.classList.contains('active') ? 'rotate(-45deg) translateY(-7px)' : 'none';
+    if (mobileMenuToggle && navMenu) {
+        const setMenuOpen = (open) => {
+            navMenu.classList.toggle('active', open);
+            mobileMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            if (spans.length < 3) return;
+            spans[0].style.transform = open ? 'rotate(45deg) translateY(7px)' : 'none';
+            spans[1].style.opacity = open ? '0' : '1';
+            spans[2].style.transform = open ? 'rotate(-45deg) translateY(-7px)' : 'none';
+        };
+
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            setMenuOpen(!navMenu.classList.contains('active'));
         });
-        
-        // Close menu when clicking outside
+
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.closest('a')) setMenuOpen(false);
+        });
+
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.navbar')) {
-                navMenu.classList.remove('active');
-                const spans = mobileMenuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
+            if (!e.target.closest('.navbar')) setMenuOpen(false);
         });
     }
 

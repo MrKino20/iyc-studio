@@ -260,7 +260,20 @@ strong {
 
 .nav-menu a.cta-button-nav,
 .nav-menu a.cta-button-nav:hover {
+    display: inline-block;
+    width: auto;
+    padding: 14px 32px;
+    background-color: var(--accent-color);
     color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 4px;
+    transition: var(--transition-normal);
 }
 
 .nav-menu a:not(.cta-button-nav):hover,
@@ -626,7 +639,7 @@ strong {
 
 .cta-section h2 {
     max-width: 800px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 3.5rem;
 }
 
 .cta-section h2.project-cta-title {
@@ -1771,6 +1784,14 @@ strong {
     text-align: left;
 }
 
+.password-form .cta-button {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .password-note {
     text-align: center;
     font-size: 0.85rem;
@@ -2388,44 +2409,125 @@ strong {
     
     .mobile-menu-toggle {
         display: flex;
+        position: relative;
+        z-index: 2;
     }
     
     .nav-menu {
-        position: fixed;
+        position: absolute;
         top: 100%;
         left: 0;
+        right: 0;
         width: 100%;
-        background-color: var(--secondary-bg);
+        background-color: var(--primary-bg);
         flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem;
-        gap: 1.5rem;
+        align-items: stretch;
+        padding: 0.35rem 1.25rem 1.15rem;
+        gap: 0;
         opacity: 0;
         visibility: hidden;
-        transition: var(--transition-normal);
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
         border-top: 1px solid var(--border-color);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        max-height: calc(100dvh - 7.5rem);
+        overflow-y: auto;
+        z-index: 1001;
     }
     
     .nav-menu.active {
         opacity: 1;
         visibility: visible;
+        transform: none;
+        pointer-events: auto;
     }
     
     .nav-menu li {
         width: 100%;
+        border-bottom: 1px solid var(--border-color);
     }
     
     .nav-menu a {
         display: block;
         width: 100%;
+        padding: 0.9rem 0.15rem;
+        text-align: center;
+    }
+
+    .nav-menu a:not(.cta-button-nav)::after {
+        bottom: -1px;
+        height: 2px;
+    }
+
+    .nav-menu > li:has(> .cta-button-nav) {
+        order: 2;
+        border-bottom: none;
+    }
+
+    .nav-menu a.cta-button-nav {
+        display: block;
+        width: 100%;
+        margin: 0.85rem 0 0.15rem;
+        padding: 14px 32px;
+        text-align: center;
     }
     
-    .language-selector .lang-dropdown {
+    .nav-menu .language-selector {
+        order: 1;
+        border-bottom: none;
+    }
+
+    .nav-menu .lang-toggle {
+        display: none;
+    }
+
+    .nav-menu .lang-dropdown {
         position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
         transform: none;
         opacity: 1;
         visibility: visible;
-        margin-top: 0.5rem;
+        margin: 0;
+        padding: 0.7rem 0 0.1rem;
+        min-width: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .nav-menu .lang-dropdown li {
+        width: auto;
+        border-bottom: none;
+    }
+
+    .nav-menu .lang-dropdown a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        width: auto;
+        padding: 0.35rem 0.7rem;
+        font-family: var(--font-heading);
+        font-size: 0.72rem;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
+        background: var(--secondary-bg);
+    }
+
+    .nav-menu .lang-dropdown a::after {
+        display: none;
+    }
+
+    .nav-menu .lang-dropdown img {
+        width: 14px;
+        height: auto;
     }
     
     .hero {
