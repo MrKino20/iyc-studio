@@ -173,7 +173,7 @@
             state.library = data.library;
             if (state.editing && state.editing.id && state.view === "galleries") {
                 const fresh = state.galleries.find((gallery) => gallery.id === state.editing.id);
-                if (fresh) state.editing = { ...fresh, reveal: state.editing.reveal || null };
+                if (fresh) state.editing = fresh;
             }
             render();
         }
@@ -649,13 +649,36 @@
             });
         }
 
+        function clientLetter(gallery, email) {
+            const name = String(gallery.clientName || "").trim();
+            const hello = name ? `Bonjour ${name},` : "Bonjour,";
+            const link = gallery.code ? `${location.origin}/client-gallery.html?code=${encodeURIComponent(gallery.code)}` : "";
+            const text = `${hello}
+
+Vos photos sont prêtes. Vous pouvez les regarder tranquillement, puis choisir celles que vous souhaitez garder.
+
+Lien : ${link}
+Code d'accès : ${gallery.code || ""}
+Mot de passe : ${gallery.accessPassword || ""}
+
+Une fois votre sélection validée, elle est définitive. Je retouche les photos choisies et je vous les envoie.
+
+À très vite,
+Jimmy
+IYC Studio`;
+            const href = email
+                ? `mailto:${email}?subject=${encodeURIComponent("Vos photos sont prêtes — IYC Studio")}&body=${encodeURIComponent(text)}`
+                : "";
+            return { text, href };
+        }
+
         function renderGalleryEditor(main) {
             const gallery = state.editing;
             const link = gallery.code ? `${location.origin}/client-gallery.html?code=${encodeURIComponent(gallery.code)}` : "";
             const chosen = gallery.photos.filter((photo) => photo.selected).map((photo) => photo.filename);
+            const letter = gallery.accessPassword ? clientLetter(gallery, gallery.email || "") : null;
             main.innerHTML = `<div class="row"><h1>${gallery.id ? "Galerie de " + escapeHtml(gallery.clientName) : "Nouvelle galerie"}</h1><button class="ghost" id="back">Retour</button></div>
                 <p id="formError" class="error"></p>
-                ${gallery.reveal ? `<div class="block"><strong>À envoyer au client</strong><p>Code : ${escapeHtml(gallery.reveal.code)}</p><p>Mot de passe : ${escapeHtml(gallery.reveal.password)}</p><p class="hint">Ce mot de passe ne s'affichera plus ensuite.</p><p><a href="${escapeAttr(gallery.reveal.link)}">${escapeHtml(gallery.reveal.link)}</a></p>${gallery.reveal.mailHref ? `<p><a class="primary" style="display:inline-block;padding:12px 16px;text-decoration:none" href="${escapeAttr(gallery.reveal.mailHref)}">Ouvrir l'e-mail pour ${escapeHtml(gallery.reveal.email)}</a></p>` : `<p class="hint">Ajoute son e-mail pour préparer le message.</p>`}</div>` : ""}
                 <form id="editor">
                     <label>Nom du client</label><input name="clientName" value="${escapeAttr(gallery.clientName)}" required>
                     <label>E-mail du client</label><input name="email" type="email" value="${escapeAttr(gallery.email || "")}" placeholder="marie@email.com">
@@ -668,6 +691,12 @@
                     <p id="uploadStatus" class="hint"></p>
                     <button class="primary" type="submit">Enregistrer</button>
                 </form>
+                ${gallery.id ? `<div class="block">
+                    <strong>E-mail au client</strong>
+                    ${letter ? `<p class="hint">Le même message pour chaque client. Tu peux le retoucher pour cet envoi, puis le renvoyer plus tard : il se réécrit tout seul.</p>
+                    <textarea id="clientMessage" rows="14">${escapeHtml(letter.text)}</textarea>
+                    <p><button class="primary" type="button" id="sendMail">Ouvrir l'e-mail</button></p>` : `<p class="hint">Écris le mot de passe du client et enregistre. Ensuite le message reste là, et tu pourras l'ouvrir autant de fois que tu veux.</p>`}
+                </div>` : ""}
                 ${link ? `<p class="hint">Lien du client : <a href="${escapeAttr(link)}">${escapeHtml(link)}</a></p>` : ""}
                 ${gallery.selection && gallery.selection.submittedAt ? `<div class="block"><strong>Sélection validée</strong><p class="hint">${new Date(gallery.selection.submittedAt).toLocaleString("fr-FR")}</p><p>${chosen.map(escapeHtml).join("<br>") || "Aucune photo"}</p></div>` : `<p class="hint">Le client n'a pas encore validé sa sélection.</p>`}
                 <div class="photos">${gallery.photos.map((photo) => `<div class="block">
@@ -676,6 +705,18 @@
                     <button class="danger" type="button" data-photo="${photo.id}">Retirer</button>
                 </div>`).join("")}</div>
                 ${gallery.id ? `<button class="danger" id="deleteGallery" type="button">Supprimer la galerie</button>` : ""}`;
+            const sendMail = document.getElementById("sendMail");
+            if (sendMail) sendMail.onclick = () => {
+                const email = document.querySelector("#editor [name=email]").value.trim();
+                const error = document.getElementById("formError");
+                if (!email) {
+                    error.textContent = "Indique l'e-mail du client.";
+                    return;
+                }
+                error.textContent = "";
+                const text = document.getElementById("clientMessage").value;
+                window.location.href = `mailto:${email}?subject=${encodeURIComponent("Vos photos sont prêtes — IYC Studio")}&body=${encodeURIComponent(text)}`;
+            };
             document.getElementById("back").onclick = () => { state.editing = null; render(); };
             main.querySelectorAll("[data-photo]").forEach((button) => button.onclick = async () => {
                 state.editing = await api(`/api/galleries/${gallery.id}/photos/${button.dataset.photo}`, { method: "DELETE" });
@@ -734,17 +775,6 @@
                         }
                     }
                     state.editing = saved;
-                    if (payload.password) {
-                        const link = `${location.origin}/client-gallery.html?code=${encodeURIComponent(saved.code)}`;
-                        const message = `Bonjour,\n\nVos photos sont en ligne.\n\nLien : ${link}\nCode d'accès : ${saved.code}\nMot de passe : ${payload.password}\n\nJimmy — IYC Studio`;
-                        state.editing.reveal = {
-                            code: saved.code,
-                            password: payload.password,
-                            email: saved.email || "",
-                            link,
-                            mailHref: saved.email ? `mailto:${saved.email}?subject=${encodeURIComponent("Vos photos — IYC Studio")}&body=${encodeURIComponent(message)}` : "",
-                        };
-                    }
                     await load();
                 } catch (err) {
                     error.textContent = err.message;

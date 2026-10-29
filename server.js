@@ -262,6 +262,7 @@ function adminView(gallery) {
       photoIds: (gallery.selection && gallery.selection.photoIds) || [],
       submittedAt: (gallery.selection && gallery.selection.submittedAt) || null,
     },
+    accessPassword: gallery.accessPassword || "",
   };
 }
 
@@ -284,6 +285,7 @@ function normalizeGallery(input, previous) {
     hash: previous?.hash || "",
     photos: previous?.photos || [],
     selection: previous?.selection || { photoIds: [], submittedAt: null },
+    accessPassword: input.password ? String(input.password) : (previous?.accessPassword || ""),
   };
   if (input.password) {
     if (String(input.password).length < 6) throw new Error("6 caractères minimum pour le mot de passe du client");

@@ -165,8 +165,27 @@ function normalizeGallery(input, previous) {
   return next;
 }
 
-function adminView(gallery) {
+async function passwordBook() {
+  return (await getJson("gallery-passwords.json")) || {};
+}
+
+async function rememberPassword(id, password) {
+  const book = await passwordBook();
+  book[id] = String(password);
+  await putJson("gallery-passwords.json", book);
+  return book;
+}
+
+async function forgetPassword(id) {
+  const book = await passwordBook();
+  delete book[id];
+  await putJson("gallery-passwords.json", book);
+  return book;
+}
+
+function adminView(gallery, passwords) {
   const selected = new Set((gallery.selection && gallery.selection.photoIds) || []);
+  const book = passwords || {};
   return {
     id: gallery.id,
     code: gallery.code,
@@ -183,6 +202,7 @@ function adminView(gallery) {
       photoIds: (gallery.selection && gallery.selection.photoIds) || [],
       submittedAt: (gallery.selection && gallery.selection.submittedAt) || null,
     },
+    accessPassword: book[gallery.id] || "",
   };
 }
 
@@ -221,11 +241,12 @@ function staticLibrary() {
 }
 
 async function contentPayload() {
-  const [portfolio, postsFile, galleries, uploaded] = await Promise.all([
+  const [portfolio, postsFile, galleries, uploaded, passwords] = await Promise.all([
     readPack("portfolio.json", "portfolio.json"),
     readPack("posts.json", "posts.json"),
     listGalleries(),
     listPublicImages().catch(() => []),
+    passwordBook(),
   ]);
   const projects = portfolio.projects || [];
   const posts = postsFile.posts || [];
@@ -250,7 +271,7 @@ async function contentPayload() {
   staticLibrary().forEach((name) => push(`images/${name}`));
   uploaded.forEach(push);
   library.sort((a, b) => path.basename(a.src).localeCompare(path.basename(b.src)));
-  return { projects, posts, galleries: galleries.map(adminView), library };
+  return { projects, posts, galleries: galleries.map((gallery) => adminView(gallery, passwords)), library };
 }
 
 function assertNoBlogPhotos(projects, posts) {
@@ -318,11 +339,13 @@ exports.handler = async (event) => {
     }
 
     if (method === "POST" && pathname === "/api/galleries") {
-      const gallery = normalizeGallery(readBody(event));
+      const body = readBody(event);
+      const gallery = normalizeGallery(body);
       const galleries = await listGalleries();
       if (galleries.some((item) => item.code === gallery.code)) throw new Error("Ce code d'accès est déjà utilisé");
+      const passwords = body.password ? await rememberPassword(gallery.id, body.password) : await passwordBook();
       await pushGallery(process.cwd(), gallery);
-      return reply(200, adminView(gallery));
+      return reply(200, adminView(gallery, passwords));
     }
 
     const originalMatch = pathname.match(/^\/api\/galleries\/([a-f0-9]+)\/photos\/([a-f0-9]{16})\/original$/);
@@ -358,7 +381,7 @@ exports.handler = async (event) => {
       if (photo) await deleteBytes("private-galleries", `${gallery.id}/${photo.id}${photo.ext}`);
       await deleteBytes(ORIGINAL_BUCKET, `${gallery.id}/${galleryPhotoMatch[2]}.jpg`);
       await pushGallery(process.cwd(), gallery);
-      return reply(200, adminView(gallery));
+      return reply(200, adminView(gallery, await passwordBook()));
     }
 
     const galleryPhotosMatch = pathname.match(/^\/api\/galleries\/([a-f0-9]+)\/photos$/);
@@ -373,7 +396,7 @@ exports.handler = async (event) => {
       await uploadBytes("private-galleries", `${gallery.id}/${id}.jpg`, image.buffer, "image/jpeg");
       gallery.photos.push(photo);
       await pushGallery(process.cwd(), gallery);
-      return reply(200, adminView(gallery));
+      return reply(200, adminView(gallery, await passwordBook()));
     }
 
     const galleryMatch = pathname.match(/^\/api\/galleries\/([a-f0-9]+)$/);
@@ -381,14 +404,17 @@ exports.handler = async (event) => {
       const galleries = await listGalleries();
       const previous = galleries.find((item) => item.id === galleryMatch[1]);
       if (!previous) return reply(404, { error: "Galerie introuvable" });
-      const gallery = normalizeGallery(readBody(event), previous);
+      const body = readBody(event);
+      const gallery = normalizeGallery(body, previous);
       if (galleries.some((item) => item.code === gallery.code && item.id !== gallery.id)) throw new Error("Ce code d'accès est déjà utilisé");
+      const passwords = body.password ? await rememberPassword(gallery.id, body.password) : await passwordBook();
       await pushGallery(process.cwd(), gallery);
-      return reply(200, adminView(gallery));
+      return reply(200, adminView(gallery, passwords));
     }
     if (galleryMatch && method === "DELETE") {
       const galleries = await listGalleries();
       const removed = galleries.find((item) => item.id === galleryMatch[1]);
+      if (removed) await forgetPassword(removed.id);
       await deleteRemoteGallery(removed);
       if (removed) {
         for (const photo of removed.photos || []) {
