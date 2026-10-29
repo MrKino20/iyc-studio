@@ -5,9 +5,90 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[functions]
+  included_files = ["i18n/*.json", "data/portfolio.json", "data/posts.json", "data/library.json"]
+
 [[redirects]]
   from = "/api/client/*"
   to = "/.netlify/functions/client"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/admin"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/portfolio/*"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/portfolio.html"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/portfolio"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/portfolio/*"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/blog.html"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/blog"
+  to = "/.netlify/functions/pages"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/blog/*"
+  to = "/.netlify/functions/pages"
   status = 200
   force = true
 
